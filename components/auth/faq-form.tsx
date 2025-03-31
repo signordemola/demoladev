@@ -31,7 +31,6 @@ export const FaqForm = ({ userId }: Props) => {
   const form = useForm<z.infer<typeof FAQSchema>>({
     resolver: zodResolver(FAQSchema),
     defaultValues: {
-      type: "faq",
       question: "",
       answer: "",
     },
