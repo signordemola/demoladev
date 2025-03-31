@@ -10,6 +10,14 @@ import testimonialImage1 from "../public/assets/images/testimonial-1.jpg";
 import testimonialImage2 from "../public/assets/images/testimonial-2.jpg";
 import testimonialImage3 from "../public/assets/images/testimonial-3.jpg";
 
+import {
+  LayoutDashboard,
+  Briefcase,
+  MessageSquare,
+  HelpCircle,
+  GroupIcon,
+} from "lucide-react";
+
 export const projects = [
   {
     name: "Artisan Brew Co",
@@ -109,5 +117,33 @@ export const navItems = [
   {
     href: "#contact",
     label: "Contact",
+  },
+];
+
+export const adminNavLink = [
+  {
+    label: "Dashboard",
+    href: "/dashboard",
+    icon: LayoutDashboard,
+  },
+  {
+    label: "Projects",
+    href: "/projects",
+    icon: Briefcase,
+  },
+  {
+    label: "Testimonials",
+    href: "/testimonials",
+    icon: MessageSquare,
+  },
+  {
+    label: "FAQs",
+    href: "/faqs",
+    icon: HelpCircle,
+  },
+  {
+    label: "Clients",
+    href: "/clients",
+    icon: GroupIcon,
   },
 ];

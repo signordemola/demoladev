@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
 import { motion, useAnimate } from "motion/react";
 import { navItems } from "@/constants";
+import { Logo } from "./logo";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -154,9 +155,7 @@ const Header = () => {
           <div className="flex justify-between items-center h-20">
             <div>
               <Link href={`/`}>
-                <span className="text-xl font-bold uppercase text-white">
-                  Demola&nbsp; Dev
-                </span>
+                <Logo />
               </Link>
             </div>
           </div>

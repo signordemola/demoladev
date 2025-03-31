@@ -2,9 +2,9 @@
 
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 
-import heroBg from "../public/assets/images/hero-image.jpg";
+// import heroBg from "../public/assets/images/hero-image.jpg";
 import CustomButton from "./custom-button";
 
 import SplitType from "split-type";
@@ -122,11 +122,23 @@ const Hero = () => {
             className="mt-20 md:mt-0 md:size-full md:absolute md:right-0 max-md:!w-full"
             style={{ width: portraitWidth }}
           >
-            <Image
+            {/* <Image
               src={heroBg}
               alt="hero image"
               className="size-full object-cover"
-            />
+            /> */}
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source
+                src="https://res.cloudinary.com/djfhuinba/video/upload/v1743363426/beauty-hero_ivxdk6.webm"
+                type="video/mp4"
+              />
+            </video>
           </motion.div>
         </div>
       </div>
