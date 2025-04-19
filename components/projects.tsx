@@ -7,7 +7,7 @@ const Projects = () => {
   return (
     <section className="section" id="projects">
       <div className="container">
-        <h2 className="text-3xl md:text-6xl lg:text-7xl capitalize ">
+        <h2 className="text-3xl md:text-6xl lg:text-7xl capitalize text-red-orange-500">
           See what i can do for your brand
         </h2>
 

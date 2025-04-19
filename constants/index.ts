@@ -47,7 +47,7 @@ export const testimonials = [
     company: "Pixel Perfect",
     role: "Head of Design",
     quote:
-      "Alex's expertise in both technical development and design created a beautiful, high-performing website",
+      "Adedamola's expertise in both technical development and design created a beautiful, high-performing website",
 
     image: testimonialImage1,
     imagePositionY: 0.2,
@@ -57,7 +57,7 @@ export const testimonials = [
     company: "Craft Coffe Co",
     role: "Founder",
     quote:
-      "Alex's expertise in both technical development and design created a beautiful, high-performing website",
+      "Adedamola's expertise in both technical development and design created a beautiful, high-performing website",
 
     image: testimonialImage2,
     imagePositionY: 0.1,
@@ -67,7 +67,7 @@ export const testimonials = [
     company: "Studio Minimal",
     role: "Creative Director",
     quote:
-      "Alex's expertise in both technical development and design created a beautiful, high-performing website",
+      "Adedamola's expertise in both technical development and design created a beautiful, high-performing website",
 
     image: testimonialImage3,
     imagePositionY: 0.4,
