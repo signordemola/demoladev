@@ -33,9 +33,9 @@ const About = () => {
   return (
     <section className="section mt-12 md:mt-16 lg:mt-20" id="about" ref={scope}>
       <div className="container">
-        <h2 className="text-4xl md:text-7xl lg:text-8xl">
+        <h2 className="text-4xl md:text-7xl lg:text-8xl tracking-[0.039em]">
           Building beautiful websites with clean code and thoughtful design to
-          help your business grow and stand out online
+          help your brand grow and stand out online
         </h2>
       </div>
     </section>

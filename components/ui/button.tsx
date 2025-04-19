@@ -21,6 +21,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         contact:
           "bg-red-orange-500 text-white border border-red-orange-500 uppercase",
+        
       },
       size: {
         default: "h-9 px-4 py-2",

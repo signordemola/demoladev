@@ -58,6 +58,21 @@
   }
 }
 
+html {
+  @apply overflow-x-hidden;
+}
+
+body {
+  @apply overflow-x-hidden;
+}
+
+/* Smooth scroll behavior */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 @layer base {
   .section {
     @apply py-24 md:py-32 lg:py-40;
@@ -69,5 +84,27 @@
 
   .word {
     @apply translate-y-full;
+  }
+}
+
+/* globals.css */
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wave-animation {
+  animation: wave 1.5s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-20deg);
+  }
+  75% {
+    transform: rotate(10deg);
   }
 }

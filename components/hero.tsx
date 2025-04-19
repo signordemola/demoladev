@@ -1,149 +1,205 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import Link from "next/link";
-// import Image from "next/image";
-
-// import heroBg from "../public/assets/images/hero-image.jpg";
+import { motion, useAnimate, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import SplitType from "split-type";
+import { stagger } from "framer-motion";
 import CustomButton from "./custom-button";
 
-import SplitType from "split-type";
-import { motion, useAnimate, useScroll, useTransform } from "motion/react";
-import { stagger } from "motion";
-
 const Hero = () => {
-  const [titleScope, titleAnimate] = useAnimate();
-  const scrollingDiv = useRef<HTMLDivElement>(null);
+  const [hasPreloaded, setHasPreloaded] = useState(false);
+  const [titleScope, titleAnimate] = useAnimate<HTMLHeadingElement>();
+  const [subTitleScope, subTitleAnimate] = useAnimate<HTMLHeadingElement>();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const { scrollYProgress } = useScroll({
-    target: scrollingDiv,
+    target: containerRef,
     offset: ["start end", "end end"],
   });
 
-  const portraitWidth = useTransform(scrollYProgress, [0, 1], ["100%", "240%"]);
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
 
   useEffect(() => {
-    new SplitType(titleScope.current, {
-      types: "lines,words",
-      tagName: "span",
-    });
+    const handlePreloadComplete = () => setHasPreloaded(true);
+    window.addEventListener("preloadComplete", handlePreloadComplete);
+    return () =>
+      window.removeEventListener("preloadComplete", handlePreloadComplete);
+  }, []);
 
-    titleAnimate(
-      titleScope.current.querySelectorAll(".word"),
-      {
-        transform: "translateY(0)",
-      },
-      {
-        duration: 0.5,
-        delay: stagger(0.2),
-      }
-    );
-  }, [titleScope, titleAnimate]);
+  useEffect(() => {
+    if (!hasPreloaded || !titleScope.current || !subTitleScope.current) return;
+
+    const animateText = async () => {
+      const titleSplit = new SplitType(titleScope.current, {
+        types: "lines,words",
+        tagName: "span",
+      });
+
+      const subTitleSplit = new SplitType(subTitleScope.current, {
+        types: "lines,words",
+        tagName: "span",
+      });
+
+      // Correct animation properties
+      await titleAnimate(
+        titleSplit.words as HTMLElement[],
+        {
+          opacity: 1,
+          transform: "translateY(0)",
+        },
+        {
+          duration: 0.8,
+          delay: stagger(0.08),
+          ease: "circOut",
+        }
+      );
+
+      await subTitleAnimate(
+        subTitleSplit.words as HTMLElement[],
+        {
+          opacity: 1,
+          transform: "translateY(0)",
+        },
+        {
+          duration: 0.6,
+          delay: stagger(0.04),
+          ease: "backOut",
+        }
+      );
+
+      videoRef.current?.play();
+    };
+
+    animateText();
+  }, [hasPreloaded, titleScope, subTitleScope, titleAnimate, subTitleAnimate]);
 
   return (
-    <section id="hero">
-      <div className="grid md:grid-cols-12 md:h-[100dvh] items-stretch sticky top-0">
-        <div className="md:col-span-7 flex flex-col justify-center">
-          <div className="container !max-w-full">
-            <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              ref={titleScope}
-              className="text-5xl md:text-6xl lg:text-7xl mt-40 md:mt-0"
+    <section
+      ref={containerRef}
+      className="relative h-screen flex items-center justify-center overflow-hidden"
+    >
+      <motion.div
+        className="absolute inset-0 z-0"
+        style={{ scale: scaleProgress }}
+      >
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover backdrop-blur-md"
+          poster="/assets/hero-poster.jpg"
+          preload="auto"
+        >
+          <source
+            src="https://res.cloudinary.com/djfhuinba/video/upload/v1745017795/stock-market_ojdmzs.mp4"
+            type="video/webm"
+          />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40" />
+      </motion.div>
+
+      <div className="relative z-10 max-w-4xl p-4 text-center">
+        <motion.h1
+          ref={titleScope}
+          className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide lg:tracking-wider mb-6 text-white"
+        >
+          <span className="block overflow-hidden">
+            <motion.span
+              className="inline-block"
+              initial={{ transform: "translateY(100px)", opacity: 0 }}
+              animate={
+                hasPreloaded ? { transform: "translateY(0)", opacity: 1 } : {}
+              }
+              transition={{ duration: 0.8, ease: "circOut" }}
             >
-              Crafting digital experiences through code and creative design
-            </motion.h1>
+              Launch or Transform Your{" "}
+              <span className="text-red-orange-500">{`Brand's Website`}</span>
+            </motion.span>
+          </span>
+        </motion.h1>
 
-            <div className="flex flex-col md:flex-row md:items-center items-start mt-10 gap-6">
-              <motion.div
-                initial={{ opacity: 0, y: "100%" }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.75 }}
-              >
-                <Link href={`#`}>
-                  <CustomButton
-                    variant="secondary"
-                    icon={
-                      <div className="overflow-hidden size-5">
-                        <div className="h-5 w-10 flex group-hover/button:-translate-x-1/2 transition-transform duration-500">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            className="size-5"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
-                            />
-                          </svg>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            className="size-5"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    }
-                  >
-                    <span>View My Work</span>
-                  </CustomButton>
-                </Link>
-              </motion.div>
+        <motion.h6
+          ref={subTitleScope}
+          className="text-lg md:text-xl lg:text-2xl mb-12 mx-auto text-gray-300"
+        >
+          <span className="inline-block overflow-hidden">
+            <motion.span
+              className="inline-block"
+              initial={{ transform: "translateY(50px)", opacity: 0 }}
+              animate={
+                hasPreloaded ? { transform: "translateY(0)", opacity: 1 } : {}
+              }
+              transition={{ duration: 0.6, delay: 0.4, ease: "backOut" }}
+            >
+              Standout website that captivate audiences and elevate your vision
+            </motion.span>
+          </span>
+        </motion.h6>
 
-              <motion.div
-                initial={{ opacity: 0, y: "100%" }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 2 }}
-              >
-                {" "}
-                <Link href={`#`}>
-                  <CustomButton variant="text">Let&apos;s Talk</CustomButton>
-                </Link>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-
-        <div className="md:col-span-5 relative">
-          <motion.div
-            className="mt-20 md:mt-0 md:size-full md:absolute md:right-0 max-md:!w-full"
-            style={{ width: portraitWidth }}
+        <div className="flex flex-col md:flex-row justify-center gap-8 lg:gap-12">
+          <motion.a
+            href="#projects"
+            initial={{ opacity: 0, y: 20 }}
+            animate={hasPreloaded ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 1.2 }}
           >
-            {/* <Image
-              src={heroBg}
-              alt="hero image"
-              className="size-full object-cover"
-            /> */}
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
+            <CustomButton
+              variant="projects"
+              icon={
+                <div className="overflow-hidden size-5">
+                  <div className="h-5 w-10 flex group-hover/button:-translate-x-1/2 transition-transform duration-500">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="size-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
+                      />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="size-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              }
             >
-              <source
-                src="https://res.cloudinary.com/djfhuinba/video/upload/v1743363426/beauty-hero_ivxdk6.webm"
-                type="video/mp4"
-              />
-            </video>
-          </motion.div>
+              <span>View My Work</span>
+            </CustomButton>
+          </motion.a>
+
+          <motion.a
+            href="#contact"
+            initial={{ opacity: 0, y: 20 }}
+            animate={hasPreloaded ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 1.4 }}
+            className="flex justify-center"
+          >
+            <CustomButton variant="text">
+              Let&apos;s Make It Happen
+            </CustomButton>
+          </motion.a>
         </div>
       </div>
-
-      <div className="md:h-[200vh]" ref={scrollingDiv}></div>
     </section>
   );
 };

@@ -17,6 +17,7 @@ export default {
     extend: {
       fontFamily: {
         sans: "var(--font-archivo)",
+        poppins: ["Poppins", "sans-serif"],
       },
       container: {
         center: true,

@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { Archivo } from "next/font/google";
+import { Archivo, Poppins } from "next/font/google";
 import "./globals.css";
+import LayoutWrapper from "@/components/layout-wrapper";
 
 const archivo = Archivo({
   display: "swap",
   weight: "variable",
   variable: "--font-archivo",
   subsets: ["latin"],
+});
+
+const poppins = Poppins({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "optional",
 });
 
 // Static metadata export
@@ -66,9 +73,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${archivo.variable} font-sans antialiased bg-stone-200 text-stone-900`}
+        className={`${archivo.variable} ${poppins.className} font-sans antialiased bg-stone-100 text-stone-900`}
       >
-        {children}
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );
