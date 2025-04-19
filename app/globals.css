@@ -59,11 +59,12 @@
 }
 
 html {
-  @apply overflow-x-hidden;
+  @apply overflow-auto;
+  scroll-behavior: smooth
 }
 
 body {
-  @apply overflow-x-hidden;
+  @apply overflow-auto;
 }
 
 /* Smooth scroll behavior */
@@ -107,4 +108,17 @@ body {
   75% {
     transform: rotate(10deg);
   }
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-transform {
+  transition-property: transform;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
 }

@@ -18,7 +18,7 @@ export const createProject = async (
     };
   }
 
-  const { name, projectUrl, imageUrl } = data;
+  const { name, projectUrl, imageUrl, category, featured, techStack } = data;
 
   try {
     await prisma.project.create({
@@ -26,6 +26,9 @@ export const createProject = async (
         name,
         imageUrl,
         projectUrl,
+        category,
+        featured,
+        techStack,
         user: {
           connect: {
             id: userId,

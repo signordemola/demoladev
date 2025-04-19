@@ -19,6 +19,7 @@ import { useState, useTransition } from "react";
 import FormError from "./form-error";
 import FormSuccess from "./form-success";
 import { Button } from "../ui/button";
+import { Textarea } from "../ui/textarea";
 
 interface Props {
   userId: string;
@@ -34,6 +35,10 @@ export const ProjectForm = ({ userId }: Props) => {
       name: "",
       imageUrl: "",
       projectUrl: "",
+      shortDescription: "",
+      techStack: [],
+      category: "",
+      featured: false,
     },
   });
 
@@ -102,6 +107,64 @@ export const ProjectForm = ({ userId }: Props) => {
                     placeholder="https://example.com"
                     disabled={isPending}
                     type="url"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="shortDescription"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Short Description</FormLabel>
+                <FormControl>
+                  <Textarea
+                    {...field}
+                    placeholder="Brief description of your project"
+                    disabled={isPending}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="techStack"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Technologies Used (comma separated)</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Next.js, React, TypeScript"
+                    disabled={isPending}
+                    onChange={(e) =>
+                      field.onChange(
+                        e.target.value.split(",").map((t) => t.trim())
+                      )
+                    }
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="category"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Category</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder="Web App, Mobile, etc."
+                    disabled={isPending}
                   />
                 </FormControl>
                 <FormMessage />

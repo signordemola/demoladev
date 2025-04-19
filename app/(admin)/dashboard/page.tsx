@@ -39,7 +39,7 @@ const AdminDashboardPage = async () => {
   }
 
   const [recentProjects, recentTestimonials] = await Promise.all([
-    getRecentProjects(userId),
+    getRecentProjects(),
     getRecentTestimonials(userId),
   ]);
 

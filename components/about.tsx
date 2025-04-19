@@ -31,7 +31,7 @@ const About = () => {
   }, [inView, animate, scope]);
 
   return (
-    <section className="section mt-12 md:mt-16 lg:mt-20" id="about" ref={scope}>
+    <section className="section mt-8 md:mt-12 lg:mt-16 " id="about" ref={scope}>
       <div className="container">
         <h2 className="text-4xl md:text-7xl lg:text-8xl tracking-[0.039em]">
           Building beautiful websites with clean code and thoughtful design to

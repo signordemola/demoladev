@@ -2,14 +2,18 @@ import { navItems } from "@/constants";
 import Link from "next/link";
 import React from "react";
 import CustomButton from "./custom-button";
+import ScrollToTop from "./scroll-to-top";
 
 const Footer = () => {
   return (
-    <footer className="bg-stone-900 text-white/90" id="contact">
-      <div className="container">
+    <footer
+      className="bg-neutral-dark text-neutral-light relative"
+      id="contact"
+    >
+      <div className="container relative">
         <div className="section">
           <div className="flex items-center gap-3">
-            <div className="size-3 rounded-full bg-green-400"></div>
+            <div className="size-3 rounded-full bg-secondary"></div>
             <span className="uppercase">One spot available for next month</span>
           </div>
 
@@ -58,9 +62,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <p className="py-16 text-sm text-white/40">
+        <p className="py-16 text-sm text-neutral-medium">
           Copyright &copy; DemolaDev &bull; All rights reserved
         </p>
+
+        <ScrollToTop />
       </div>
     </footer>
   );

@@ -15,6 +15,9 @@ export default {
       lg: "1200px",
     },
     extend: {
+      backgroundClip: {
+        text: "text",
+      },
       fontFamily: {
         sans: "var(--font-archivo)",
         poppins: ["Poppins", "sans-serif"],
@@ -32,7 +35,17 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+
       colors: {
+        primary: "#FE7733",
+        secondary: "#B1FA63",
+        accent: "#B2A1FF",
+        neutral: {
+          light: "#FFFFFF",
+          medium: "#D1D1D1",
+          dark: "#243837",
+        },
+
         "red-orange": {
           500: "color-mix(in srgb, theme('colors.red.500') 50%, theme('colors.orange.500') 50%)",
         },
@@ -46,21 +59,9 @@ export default {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",

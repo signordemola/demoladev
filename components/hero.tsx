@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 import { stagger } from "framer-motion";
 import CustomButton from "./custom-button";
+import ScrollToNext from "./scroll-to-next";
 
 const Hero = () => {
   const [hasPreloaded, setHasPreloaded] = useState(false);
@@ -78,6 +79,7 @@ const Hero = () => {
     <section
       ref={containerRef}
       className="relative h-screen flex items-center justify-center overflow-hidden"
+      id="home"
     >
       <motion.div
         className="absolute inset-0 z-0"
@@ -108,22 +110,21 @@ const Hero = () => {
         >
           <span className="block overflow-hidden">
             <motion.span
-              className="inline-block"
+              className="inline-block bg-gradient-to-t from-secondary to-accent text-transparent bg-clip-text"
               initial={{ transform: "translateY(100px)", opacity: 0 }}
               animate={
                 hasPreloaded ? { transform: "translateY(0)", opacity: 1 } : {}
               }
               transition={{ duration: 0.8, ease: "circOut" }}
             >
-              Launch or Transform Your{" "}
-              <span className="text-red-orange-500">{`Brand's Website`}</span>
+              Launch or Transform Your {`Brand's Website`}
             </motion.span>
           </span>
         </motion.h1>
 
         <motion.h6
           ref={subTitleScope}
-          className="text-lg md:text-xl lg:text-2xl mb-12 mx-auto text-gray-300"
+          className="text-lg md:text-xl lg:text-2xl mb-12 mx-auto text-neutral-medium"
         >
           <span className="inline-block overflow-hidden">
             <motion.span
@@ -139,7 +140,7 @@ const Hero = () => {
           </span>
         </motion.h6>
 
-        <div className="flex flex-col md:flex-row justify-center gap-8 lg:gap-12">
+        <div className="flex flex-col md:flex-row justify-center gap-8 lg:gap-8">
           <motion.a
             href="#projects"
             initial={{ opacity: 0, y: 20 }}
@@ -200,6 +201,8 @@ const Hero = () => {
           </motion.a>
         </div>
       </div>
+
+      <ScrollToNext />
     </section>
   );
 };

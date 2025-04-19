@@ -71,7 +71,7 @@ const Preloader = () => {
               },
             },
           }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-purple-100 to-blue-50"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-purple-100 to-blue-50 overflow-hidden"
         >
           {/* Animated Gradient Background */}
           <motion.div
@@ -186,7 +186,9 @@ const Preloader = () => {
               <span className="bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent font-bold">
                 Pro Tip:
               </span>{" "}
-              <span className="text-gray-600">I use cutting-edge animations</span>
+              <span className="text-gray-600">
+                I use cutting-edge animations
+              </span>
             </motion.div>
           </div>
 

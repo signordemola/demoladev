@@ -1,9 +1,16 @@
-import { projects } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Projects = () => {
+import defaulImageUrl from "../public/assets/images/project-1.jpg";
+import CustomButton from "./custom-button";
+import { FeaturedProject } from "@/types";
+
+interface ProjectsProps {
+  projects: FeaturedProject[];
+}
+
+const Projects = ({ projects }: ProjectsProps) => {
   return (
     <section className="section" id="projects">
       <div className="container">
@@ -12,18 +19,20 @@ const Projects = () => {
         </h2>
 
         <div className="mt-10 md:mt-16 lg:mt-20">
-          {projects?.map(({ name, image }) => {
+          {projects?.map(({ id, name, imageUrl, projectUrl, category }) => {
             return (
               <Link
-                key={name}
-                href={`#`}
+                key={id}
+                href={projectUrl || "#"}
                 className="border-t last:border-b border-stone-600 border-dotted py-6 md:py-8 lg:py-10 flex flex-col relative group/project"
               >
-                <div className="absolute bottom-0 left-0 w-full h-0 group-hover/project:h-full transition-all duration-700 bg-stone-300"></div>
+                {/* Animated background fill - works on both mobile and desktop */}
+                <div className="absolute bottom-0 left-0 w-full h-0 group-hover/project:h-full md:group-hover/project:h-full active:h-full transition-all duration-700 bg-stone-300"></div>
                 <div className="relative">
+                  {/* Mobile image */}
                   <div className="aspect-video md:hidden">
                     <Image
-                      src={image}
+                      src={imageUrl || defaulImageUrl}
                       alt={name}
                       height={1000}
                       width={1000}
@@ -31,17 +40,23 @@ const Projects = () => {
                     />
                   </div>
 
+                  {/* Desktop content */}
                   <div className="mt-8 md:mt-0 flex justify-between items-center md:grid md:[grid-template-columns:1fr_300px_max-content] md:gap-8">
                     <div className="lg:group-hover/project:pl-4 transition-all duration-700">
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl">
-                        {name}
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl flex gap-2">
+                        <span>{name}</span>
+                        {category && (
+                          <span className="text-xs text-gradient-to-r from-purple-100 to-blue-100 text-purple-800">
+                            {category}
+                          </span>
+                        )}
                       </h3>
                     </div>
 
                     <div className="relative">
                       <div className="absolute aspect-video w-full top-1/2 -translate-y-1/2 opacity-0 scale-90 group-hover/project:opacity-100 group-hover/project:scale-100 lg:group-hover/project:scale-110 transition-all duration-500 z-10">
                         <Image
-                          src={image}
+                          src={imageUrl || defaulImageUrl}
                           alt={name}
                           height={1000}
                           width={1000}
@@ -59,7 +74,7 @@ const Projects = () => {
                             viewBox="0 0 24 24"
                             strokeWidth="1.5"
                             stroke="currentColor"
-                            className="size-6"
+                            className="size-6 shrink-0 text-purple-500"
                           >
                             <path
                               strokeLinecap="round"
@@ -73,7 +88,7 @@ const Projects = () => {
                             viewBox="0 0 24 24"
                             strokeWidth="1.5"
                             stroke="currentColor"
-                            className="size-6"
+                            className="size-6 shrink-0 text-purple-500 -ml-[1px]"
                           >
                             <path
                               strokeLinecap="round"
@@ -89,6 +104,15 @@ const Projects = () => {
               </Link>
             );
           })}
+        </div>
+
+        <div className="w-full flex justify-end mt-12">
+          {" "}
+          <Link href={`/all-projects`}>
+            <CustomButton variant="text" className="font-bold">
+              <span>View All Projects</span>
+            </CustomButton>
+          </Link>
         </div>
       </div>
     </section>
