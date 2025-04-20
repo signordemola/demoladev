@@ -139,8 +139,10 @@ export const getFeaturedProjects = cache(
           imageUrl: true,
           projectUrl: true,
           featured: true,
+          techStack: true,
+          shortDescription: true,
         },
-        orderBy: { createdAt: "desc" },
+        orderBy: { updatedAt: "desc" },
       });
     } catch (error) {
       console.error("Failed to fetch featured projects:", error);
