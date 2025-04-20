@@ -4,6 +4,9 @@ export type PortfolioProject = {
   imageUrl: string;
   projectUrl: string;
   category?: string | null;
+  techStack: string[];
+  featured: boolean;
+  shortDescription?: string | null;
   createdAt: Date;
   updatedAt: Date;
 };

@@ -20,26 +20,40 @@ import FormError from "./form-error";
 import FormSuccess from "./form-success";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
+import { ProjectDetails } from "@/types";
+import { updateProject } from "@/actions/update-project";
 
-interface Props {
+interface ProjectFormProps {
   userId: string;
+  project?: ProjectDetails;
 }
 
-export const ProjectForm = ({ userId }: Props) => {
+export const ProjectForm = ({ userId, project }: ProjectFormProps) => {
+  console.log(project);
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
   const form = useForm<z.infer<typeof ProjectSchema>>({
     resolver: zodResolver(ProjectSchema),
-    defaultValues: {
-      name: "",
-      imageUrl: "",
-      projectUrl: "",
-      shortDescription: "",
-      techStack: [],
-      category: "",
-      featured: false,
-    },
+    defaultValues: project
+      ? {
+          name: project.name,
+          imageUrl: project.imageUrl,
+          projectUrl: project.projectUrl,
+          shortDescription: project.shortDescription ?? "",
+          techStack: project.techStack,
+          category: project.category || "",
+          featured: project.featured,
+        }
+      : {
+          name: "",
+          imageUrl: "",
+          projectUrl: "",
+          shortDescription: "",
+          techStack: [],
+          category: "",
+          featured: false,
+        },
   });
 
   async function onSubmit(values: z.infer<typeof ProjectSchema>) {
@@ -47,10 +61,17 @@ export const ProjectForm = ({ userId }: Props) => {
     setSuccess("");
 
     startTransition(async () => {
-      createProject(values, userId).then((data) => {
-        setError(data?.error);
-        setSuccess(data?.success);
-      });
+      if (project?.id) {
+        updateProject(values, project?.id).then((data) => {
+          setError(data?.error);
+          setSuccess(data?.success);
+        });
+      } else {
+        createProject(values, userId).then((data) => {
+          setError(data?.error);
+          setSuccess(data?.success);
+        });
+      }
     });
   }
 
@@ -123,7 +144,8 @@ export const ProjectForm = ({ userId }: Props) => {
                 <FormControl>
                   <Textarea
                     {...field}
-                    placeholder="Brief description of your project"
+                    value={field.value ?? ""}
+                    placeholder="Brief description..."
                     disabled={isPending}
                   />
                 </FormControl>
@@ -142,6 +164,7 @@ export const ProjectForm = ({ userId }: Props) => {
                   <Input
                     placeholder="Next.js, React, TypeScript"
                     disabled={isPending}
+                    value={field.value.join(", ")}
                     onChange={(e) =>
                       field.onChange(
                         e.target.value.split(",").map((t) => t.trim())
@@ -163,7 +186,7 @@ export const ProjectForm = ({ userId }: Props) => {
                 <FormControl>
                   <Input
                     {...field}
-                    placeholder="Web App, Mobile, etc."
+                    placeholder="Web App, Mobile, etc..."
                     disabled={isPending}
                   />
                 </FormControl>
@@ -176,8 +199,19 @@ export const ProjectForm = ({ userId }: Props) => {
         <FormError message={error} />
         <FormSuccess message={success} />
 
-        <Button type="submit" disabled={isPending} className="w-full">
-          {isPending ? "Creating Project..." : "Create Project"}
+        <Button
+          type="submit"
+          size={`lg`}
+          disabled={isPending}
+          className="w-full"
+        >
+          {isPending
+            ? project?.id
+              ? "Updating Project..."
+              : "Creating Project..."
+            : project?.id
+            ? "Update Project"
+            : "Create Project"}
         </Button>
       </form>
     </Form>

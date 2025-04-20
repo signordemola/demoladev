@@ -23,6 +23,7 @@ import { ProjectForm } from "@/components/auth/project-form";
 import { TestimonialForm } from "@/components/auth/testimonial-form";
 import { FaqForm } from "@/components/auth/faq-form";
 import { ClientForm } from "@/components/auth/client-form";
+import { EditProjectModal } from "@/components/auth/edit-project-modal";
 
 const AdminDashboardPage = async () => {
   const session = await auth();
@@ -119,7 +120,7 @@ const AdminDashboardPage = async () => {
                   <TableCell className="text-right">
                     <div className="flex gap-2 justify-end">
                       <Button variant="outline" size="sm" asChild>
-                        <Link href={`/admin/projects/${project.id}`}>Edit</Link>
+                        <EditProjectModal project={project} userId={userId} />
                       </Button>
                     </div>
                   </TableCell>

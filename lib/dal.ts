@@ -87,6 +87,9 @@ export const getRecentProjects = cache(
           imageUrl: true,
           projectUrl: true,
           category: true,
+          techStack: true,
+          featured: true,
+          shortDescription: true,
           createdAt: true,
           updatedAt: true,
         },
@@ -137,7 +140,7 @@ export const getFeaturedProjects = cache(
           projectUrl: true,
           featured: true,
         },
-        orderBy: { createdAt: "desc" },
+        orderBy: { updatedAt: "desc" },
       });
     } catch (error) {
       console.error("Failed to fetch featured projects:", error);

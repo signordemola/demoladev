@@ -19,7 +19,7 @@ const Projects = ({ projects }: ProjectsProps) => {
         </h2>
 
         <div className="mt-10 md:mt-16 lg:mt-20">
-          {projects?.map(({ id, name, imageUrl, projectUrl, category }) => {
+          {projects?.map(({ id, name, imageUrl, projectUrl }) => {
             return (
               <Link
                 key={id}
@@ -45,11 +45,6 @@ const Projects = ({ projects }: ProjectsProps) => {
                     <div className="lg:group-hover/project:pl-4 transition-all duration-700">
                       <h3 className="text-2xl md:text-3xl lg:text-4xl flex gap-2">
                         <span>{name}</span>
-                        {category && (
-                          <span className="text-xs text-gradient-to-r from-purple-100 to-blue-100 text-purple-800">
-                            {category}
-                          </span>
-                        )}
                       </h3>
                     </div>
 
