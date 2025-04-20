@@ -140,7 +140,7 @@ export const getFeaturedProjects = cache(
           projectUrl: true,
           featured: true,
         },
-        orderBy: { updatedAt: "desc" },
+        orderBy: { createdAt: "desc" },
       });
     } catch (error) {
       console.error("Failed to fetch featured projects:", error);
