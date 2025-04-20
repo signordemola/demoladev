@@ -11,6 +11,8 @@ interface ProjectsProps {
 }
 
 const Projects = ({ projects }: ProjectsProps) => {
+  console.log('Deployed');
+  console.log('Featured Projects: ', projects);
   return (
     <section className="section" id="projects">
       <div className="container">
@@ -99,13 +101,15 @@ const Projects = ({ projects }: ProjectsProps) => {
               </Link>
             );
           })}
+
+
         </div>
 
         <div className="w-full flex justify-end mt-12">
           {" "}
           <Link href={`/all-projects`}>
             <CustomButton variant="text" className="font-bold">
-              <span>View All Projects</span>
+              <span>View All Projects </span>
             </CustomButton>
           </Link>
         </div>
