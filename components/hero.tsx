@@ -8,9 +8,9 @@ import Headline from "./headline";
 const Hero = () => {
   return (
     <section id="home" className="mx-3 md:mx-0">
-      <div className="mx-auto relative max-w-[1200px] gap-8 rounded-xl shadow-sm bg-white mb-1 overflow-hidden lg:px-8 py-4 md:py-8 md:pt-12 lg:pt-20">
+      <div className="mx-auto relative px-2 max-w-[1200px] gap-8 rounded-xl shadow-sm bg-white mb-1 overflow-hidden lg:px-8 py-4 md:py-8 md:pt-12 lg:pt-20">
         <div className="flex flex-col pb-4 items-center text-center mb-2">
-          <Headline emoji="✌🏻" text="Hi there! I'm Adedamola"/>
+          <Headline emoji="✌🏻" text="Hi there! I'm Adedamola" />
           <h1 className="font-satoshi font-bold tracking-wide text-[40px] leading-none md:text-[65px] lg:text-[60px] xl:text-[69px] pb-3">
             <span
               data-br=":r7:"
@@ -22,7 +22,7 @@ const Hero = () => {
                 textWrap: "balance",
               }}
             >
-              Launch or transform your {`brand's website`}
+              Launch or Transform your {`brand's website`}
             </span>
           </h1>
           <p className="max-w-md text-base text-[#898989] lg:max-w-2xl lg:text-lg p-2 md:p-0">

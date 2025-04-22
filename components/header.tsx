@@ -37,7 +37,7 @@ const Header = () => {
           } overflow-hidden`}
         >
           <nav
-            className="mt-24 flex flex-col"
+            className="mt-20 flex flex-col"
             aria-label="mobile navbar"
             data-orientation="vertical"
           >
@@ -90,7 +90,7 @@ const Header = () => {
           </nav>
         </div>
         <div
-          className={`w-full max-w-[1440px] px-4 md:px-[34px] fixed left-1/2 top-0 z-50 mx-auto mb-8 flex -translate-x-1/2 items-center justify-between py-5 lg:mt-2 lg:max-w-[min(1150px,calc(100vw-24px))] lg:rounded-2xl lg:py-0 before:shadow-fade before:absolute before:inset-0 before:z-[-1] before:bg-white before:transition-opacity before:duration-300 lg:before:rounded-2xl bg-primary-50/95 border-0 before:block ${
+          className={`w-full max-w-[1440px] px-4 md:px-[34px] fixed left-1/2 top-0 z-50 mx-auto mb-8 flex -translate-x-1/2 items-center justify-between py-2 lg:mt-2 lg:max-w-[min(1150px,calc(100vw-24px))] lg:rounded-2xl lg:py-0 before:shadow-fade before:absolute before:inset-0 before:z-[-1] before:bg-white before:transition-opacity before:duration-300 lg:before:rounded-2xl bg-primary-50/95 border-0 before:block ${
             isScrolled
               ? "before:opacity-100 before:border-0 shadow-sm"
               : "before:opacity-0 before:border"

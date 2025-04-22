@@ -8,33 +8,33 @@ import {
 
 export const testimonials = [
   {
-    name: "Sarah Chen",
-    company: "Pixel Perfect",
-    role: "Head of Design",
+    name: "Chinwe Okoro",
+    company: "Lagos Fashion Boutique",
+    role: "Owner",
     quote:
-      "Adedamola's expertise in both technical development and design created a beautiful, high-performing website",
-
-    image: "testimonialImage1",
+      "Adedamola’s stunning website design doubled our online sales in just months. His creativity and dedication to our brand’s growth left us truly grateful.",
+    image:
+      "https://res.cloudinary.com/djfhuinba/image/upload/v1722571035/samples/man-portrait.jpg",
     imagePositionY: 0.2,
   },
   {
-    name: "Marcus Rodriguez",
-    company: "Craft Coffe Co",
-    role: "Founder",
+    name: "David Thompson",
+    company: "Global Fitness Co.",
+    role: "Marketing Director",
     quote:
-      "Adedamola's expertise in both technical development and design created a beautiful, high-performing website",
-
-    image: "testimonialImage2",
+      "Adedamola’s vibrant website boosted our customer engagement by 40% and drove record-breaking revenue. His talent is unmatched, and we’re so thankful for his work.",
+    image:
+      "https://res.cloudinary.com/djfhuinba/image/upload/v1722571034/samples/smile.jpg",
     imagePositionY: 0.1,
   },
   {
-    name: "Emily Watson",
-    company: "Studio Minimal",
-    role: "Creative Director",
+    name: "Aisha Bello",
+    company: "Nigerian EduTech",
+    role: "Co-Founder",
     quote:
-      "Adedamola's expertise in both technical development and design created a beautiful, high-performing website",
-
-    image: "testimonialImage3",
+      "Adedamola’s exceptional design increased our user sign-ups by 50%, helping our startup thrive. We’re incredibly appreciative of his transformative impact.",
+    image:
+      "https://res.cloudinary.com/djfhuinba/image/upload/v1722571027/samples/people/smiling-man.jpg",
     imagePositionY: 0.4,
   },
 ];
@@ -43,22 +43,27 @@ export const faqs = [
   {
     question: "How long does it take to build a website?",
     answer:
-      "It depends on the complexity of the website and the scope of the project",
+      "The timeline depends on your project’s scope, but I typically deliver simple portfolios or landing pages within a week, while complex web apps takes longer. Using Next.js and Supabase, I ensure fast, scalable results.",
   },
   {
-    question: "What's your development proccess like?",
+    question: "What is your development process like?",
     answer:
-      "It depends on the complexity of the website and the scope of the project",
-  },
-  {
-    question: "Do you work with international clients?",
-    answer:
-      "It depends on the complexity of the website and the scope of the project",
+      "My process starts with understanding your goals, followed by wireframing, design (using Tailwind CSS for vibrant, responsive UI), development (Next.js and Supabase for performance), and testing. I provide regular updates and use Sentry for error-free launches.",
   },
   {
     question: "What industries do you specialize in?",
     answer:
-      "It depends on the complexity of the website and the scope of the project",
+      "I specialize in e-commerce, portfolios, SaaS platforms, and blogs, with expertise in Next.js, Supabase, and Tailwind CSS. Whether you’re a Nigerian startup or a global brand, I craft tailored, high-converting websites. ",
+  },
+  {
+    question: "Can you optimize my website for SEO and performance?",
+    answer:
+      "Yes! I use Next.js for fast load times, Supabase for efficient data handling, and SEO best practices (metadata, sitemaps) to boost rankings. My sites are mobile-friendly and monitored with Sentry for reliability.",
+  },
+  {
+    question: "Do you offer ongoing support after launch?",
+    answer:
+      "Definitely! I provide maintenance, updates, and performance monitoring using Sentry to ensure your site stays flawless. From bug fixes to new features, I’ve got you covered.",
   },
 ];
 
