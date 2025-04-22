@@ -12,7 +12,11 @@ const About = () => {
 
           <div className="border-b-2 border-neutral-dark" />
           <div className="px-[20px] py-8">
-            <h2 className="text-2xl md:text-4xl lg:text-6xl font-inter font-light">
+            <h2
+              className="text-2xl md:text-4xl lg:text-6xl font-inter font-light"
+              data-scroll
+              data-scroll-speed="0.1"
+            >
               Building beautiful websites with clean code and thoughtful design
               to help your brand grow and stand out online...
             </h2>
