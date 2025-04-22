@@ -11,7 +11,7 @@ const About = () => {
           <div className="quote" />
           <div className="border-b-2 border-neutral-dark" />
           <div className="px-[20px] py-8">
-            <h2 className="text-4xl md:text-7xl lg:text-8xl font-inter font-light">
+            <h2 className="text-3xl md:text-6xl lg:text-8xl font-inter font-light">
               Building beautiful websites with clean code and thoughtful design
               to help your brand grow and stand out online...
             </h2>

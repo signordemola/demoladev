@@ -10,7 +10,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="bg-neutral-darker text-neutral-light  px-4 py-16 font-inter"
+      className="bg-neutral-darker text-neutral-light px-4 pt-16 pb-8 font-inter"
       id="contact"
     >
       <div className="max-w-[1200px] mx-auto">
@@ -65,7 +65,7 @@ const Footer = () => {
         </div>
 
         <div className="py-16 relative">
-          <p className="absolute bottom-[1rem] text-sm text-neutral-medium">
+          <p className="absolute bottom-[1rem] text-xs text-neutral- text-wrap pr-2 md:pr-0">
             Copyright &copy; DemolaDev {year} &bull; All rights reserved
           </p>
 

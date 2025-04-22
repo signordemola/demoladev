@@ -8,7 +8,7 @@ const Preloader = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 30); // 3-second preloader
+    }, 3000); // 3-second preloader
 
     return () => clearTimeout(timer);
   }, []);
@@ -17,7 +17,7 @@ const Preloader = () => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-neutral-light z-[999]">
       <div>
-        <h1 className="font-satoshi font-bold text-4xl md:text-5xl bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+        <h1 className="font-satoshi font-bold text-2xl md:text-3xl bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
           Loading Your Vision… <span className="emoji inline-block">✌🏻</span>
         </h1>
       </div>

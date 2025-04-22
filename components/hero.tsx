@@ -88,7 +88,7 @@ const Hero = () => {
               loop
               muted
               playsInline
-              className="w-full md:h-[580px] md:object-cover backdrop-blur-2xl rounded-md"
+              className="w-full h-full md:h-[580px] md:object-cover backdrop-blur-2xl rounded-md"
             >
               <source
                 src="https://res.cloudinary.com/djfhuinba/video/upload/v1745017812/infography_wvpf2h.mp4"
