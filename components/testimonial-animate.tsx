@@ -52,14 +52,14 @@ const TestimonialAnimate = (
       </div>
 
       <blockquote className="md:col-span-3">
-        <div className="text-2xl md:text-4xl lg:text-5xl mt-8 md:mt-0">
+        <div className="text-xl md:text-2xl lg:text-4xl mt-6 md:mt-0">
           <span>&ldquo;</span>
           <span className="px-1">{quote}</span>
           <span>&rdquo;</span>
         </div>
         <br />
         <br />
-        <cite className="mt-4 md:mt-8 md:text-lg lg:text-xl not-italic text-accent-foreground">
+        <cite className="md:mt-2 md:text-lg lg:text-xl not-italic text-accent-foreground">
           {name}, {role} at {company}
         </cite>
       </blockquote>
