@@ -1,24 +1,17 @@
 import About from "@/components/about";
 import Faqs from "@/components/faqs";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
 import Hero from "@/components/hero";
 import Projects from "@/components/projects";
 import Testimonials from "@/components/testimonials";
-import { getFeaturedProjects } from "@/lib/dal";
 
-export default async function Home() {
-  const projects = await getFeaturedProjects();
-
+export default function Home() {
   return (
-    <main>
-      <Header />
+    <main className="pt-22 px-3 max-w-[1440px] border-l border-r border-neutral-dark/10">
       <Hero />
       <About />
-      <Projects projects={projects} />
+      <Projects />
       <Testimonials />
       <Faqs />
-      <Footer />
     </main>
   );
 }

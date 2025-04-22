@@ -1,152 +1,38 @@
 "use client";
 
-import { motion, useAnimate, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import SplitType from "split-type";
-import { stagger } from "framer-motion";
+import React from "react";
 import CustomButton from "./custom-button";
-import ScrollToNext from "./scroll-to-next";
+import Link from "next/link";
+import Headline from "./headline";
 
 const Hero = () => {
-  const [hasPreloaded, setHasPreloaded] = useState(false);
-  const [titleScope, titleAnimate] = useAnimate<HTMLHeadingElement>();
-  const [subTitleScope, subTitleAnimate] = useAnimate<HTMLHeadingElement>();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end end"],
-  });
-
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
-
-  useEffect(() => {
-    const handlePreloadComplete = () => setHasPreloaded(true);
-    window.addEventListener("preloadComplete", handlePreloadComplete);
-    return () =>
-      window.removeEventListener("preloadComplete", handlePreloadComplete);
-  }, []);
-
-  useEffect(() => {
-    if (!hasPreloaded || !titleScope.current || !subTitleScope.current) return;
-
-    const animateText = async () => {
-      const titleSplit = new SplitType(titleScope.current, {
-        types: "lines,words",
-        tagName: "span",
-      });
-
-      const subTitleSplit = new SplitType(subTitleScope.current, {
-        types: "lines,words",
-        tagName: "span",
-      });
-
-      // Correct animation properties
-      await titleAnimate(
-        titleSplit.words as HTMLElement[],
-        {
-          opacity: 1,
-          transform: "translateY(0)",
-        },
-        {
-          duration: 0.8,
-          delay: stagger(0.08),
-          ease: "circOut",
-        }
-      );
-
-      await subTitleAnimate(
-        subTitleSplit.words as HTMLElement[],
-        {
-          opacity: 1,
-          transform: "translateY(0)",
-        },
-        {
-          duration: 0.6,
-          delay: stagger(0.04),
-          ease: "backOut",
-        }
-      );
-
-      videoRef.current?.play();
-    };
-
-    animateText();
-  }, [hasPreloaded, titleScope, subTitleScope, titleAnimate, subTitleAnimate]);
-
   return (
-    <section
-      ref={containerRef}
-      className="relative h-screen flex items-center justify-center overflow-hidden"
-      id="home"
-    >
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{ scale: scaleProgress }}
-      >
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover backdrop-blur-md"
-          poster="/assets/hero-poster.jpg"
-          preload="auto"
-        >
-          <source
-            src="https://res.cloudinary.com/djfhuinba/video/upload/v1745017795/stock-market_ojdmzs.mp4"
-            type="video/webm"
-          />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40" />
-      </motion.div>
-
-      <div className="relative z-10 max-w-4xl p-4 text-center">
-        <motion.h1
-          ref={titleScope}
-          className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide lg:tracking-wider mb-6 text-white"
-        >
-          <span className="block overflow-hidden">
-            <motion.span
-              className="inline-block bg-gradient-to-t from-secondary to-accent text-transparent bg-clip-text"
-              initial={{ transform: "translateY(100px)", opacity: 0 }}
-              animate={
-                hasPreloaded ? { transform: "translateY(0)", opacity: 1 } : {}
-              }
-              transition={{ duration: 0.8, ease: "circOut" }}
+    <section id="home" className="mx-3 md:mx-0">
+      <div className="mx-auto relative max-w-[1200px] gap-8 rounded-xl shadow-sm bg-white mb-1 overflow-hidden lg:px-8 py-4 md:py-8 md:pt-12 lg:pt-20">
+        <div className="flex flex-col pb-4 items-center text-center mb-2">
+          <Headline emoji="✌🏻" text="Hi there! I'm Adedamola"/>
+          <h1 className="font-satoshi font-bold tracking-wide text-[40px] leading-none md:text-[65px] lg:text-[60px] xl:text-[69px] pb-3">
+            <span
+              data-br=":r7:"
+              data-brr="1"
+              style={{
+                display: "inline-block",
+                verticalAlign: "top",
+                textDecoration: "inherit",
+                textWrap: "balance",
+              }}
             >
-              Launch or Transform Your {`Brand's Website`}
-            </motion.span>
-          </span>
-        </motion.h1>
+              Launch or transform your {`brand's website`}
+            </span>
+          </h1>
+          <p className="max-w-md text-base text-[#898989] lg:max-w-2xl lg:text-lg p-2 md:p-0">
+            A fully customizable & standout website that captivate audiences and
+            elevate your vision
+          </p>
+        </div>
 
-        <motion.h6
-          ref={subTitleScope}
-          className="text-lg md:text-xl lg:text-2xl mb-12 mx-auto text-neutral-medium"
-        >
-          <span className="inline-block overflow-hidden">
-            <motion.span
-              className="inline-block"
-              initial={{ transform: "translateY(50px)", opacity: 0 }}
-              animate={
-                hasPreloaded ? { transform: "translateY(0)", opacity: 1 } : {}
-              }
-              transition={{ duration: 0.6, delay: 0.4, ease: "backOut" }}
-            >
-              Standout website that captivate audiences and elevate your vision
-            </motion.span>
-          </span>
-        </motion.h6>
-
-        <div className="flex flex-col md:flex-row justify-center gap-8 lg:gap-8">
-          <motion.a
-            href="#projects"
-            initial={{ opacity: 0, y: 20 }}
-            animate={hasPreloaded ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 1.2 }}
-          >
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 lg:gap-8">
+          <Link href="#projects">
             <CustomButton
               variant="projects"
               icon={
@@ -184,25 +70,34 @@ const Hero = () => {
                 </div>
               }
             >
-              <span>View My Work</span>
+              <span className="tracking-wider">View My Work</span>
             </CustomButton>
-          </motion.a>
+          </Link>
 
-          <motion.a
-            href="#contact"
-            initial={{ opacity: 0, y: 20 }}
-            animate={hasPreloaded ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 1.4 }}
-            className="flex justify-center"
-          >
-            <CustomButton variant="text">
+          <Link href="#contact" className="flex justify-center">
+            <CustomButton variant="primary">
               Let&apos;s Make It Happen
             </CustomButton>
-          </motion.a>
+          </Link>
+        </div>
+
+        <div className="relative z-[2] mx-auto translate-y-[10%]">
+          <div className="animate-slide-down origin-center transform rounded-xl bg-neutral-medium p-1 transition-all duration-1000 ease-out border border-neutral-dark/20">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full md:h-[580px] md:object-cover backdrop-blur-2xl rounded-md"
+            >
+              <source
+                src="https://res.cloudinary.com/djfhuinba/video/upload/v1745017812/infography_wvpf2h.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </div>
         </div>
       </div>
-
-      <ScrollToNext />
     </section>
   );
 };

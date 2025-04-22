@@ -1,23 +1,23 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Link from "next/link";
 
 export const Logo = () => (
-  <motion.div className="hover:[&>svg]:[filter:drop-shadow(0_0_8px_rgba(99,102,241,0.3))]">
+  <Link
+    href="/"
+    className="group hover:[&>svg]:[filter:drop-shadow(0_0_8px_rgba(99,102,241,0.3))]"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 480 120"
-      className="w-64 h-auto" // Increased size from w-40 to w-64
+      className="w-64 h-auto transition-all duration-300"
     >
       <defs>
         <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style={{ stopColor: "#6366f1" }} />
+          <stop offset="0%" style={{ stopColor: "#151819" }} />
           <stop offset="25%" style={{ stopColor: "#8b5cf6" }} />
-          <stop offset="50%" style={{ stopColor: "#ec4899" }} />
+          <stop offset="50%" style={{ stopColor: "#66d9ed" }} />
           <stop offset="75%" style={{ stopColor: "#f59e0b" }} />
-          <stop offset="100%" style={{ stopColor: "#6366f1" }} />
+          <stop offset="100%" style={{ stopColor: "#151819" }} />
 
-          {/* Animated gradient movement */}
           <animate
             attributeName="x1"
             values="0%;100%;0%"
@@ -53,7 +53,6 @@ export const Logo = () => (
         </style>
       </defs>
 
-      {/* Visible Text Version */}
       <g transform="translate(20, 80)" filter="url(#neon-glow)">
         <text
           x="0"
@@ -68,7 +67,6 @@ export const Logo = () => (
         </text>
       </g>
 
-      {/* Tech Elements */}
       <g className="particles" opacity="0.8">
         <circle
           cx="400"
@@ -95,5 +93,5 @@ export const Logo = () => (
         />
       </g>
     </svg>
-  </motion.div>
+  </Link>
 );

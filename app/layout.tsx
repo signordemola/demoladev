@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Archivo, Poppins } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import LayoutWrapper from "@/components/layout-wrapper";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import Preloader from "@/components/preloader";
 
-const archivo = Archivo({
-  display: "swap",
-  weight: "variable",
-  variable: "--font-archivo",
+const inter = Inter({
+  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
+  display: "optional",
 });
 
 const poppins = Poppins({
@@ -16,7 +17,6 @@ const poppins = Poppins({
   display: "optional",
 });
 
-// Static metadata export
 export const metadata: Metadata = {
   title: {
     default: "Demoladev | Web Solutions",
@@ -71,11 +71,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${archivo.variable} ${poppins.className} font-sans antialiased bg-neutral-light text-neutral-dark`}
+        className={`${inter.className}  ${poppins.className} bg-neutral-medium text-neutral-darker antialiased`}
       >
-        <LayoutWrapper>{children}</LayoutWrapper>
+        <Preloader />
+        <Header />
+        <div className="mx-auto max-w-[1200px]">{children}</div>
+        <Footer />
       </body>
     </html>
   );

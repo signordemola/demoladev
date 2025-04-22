@@ -1,215 +1,168 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
+import { Logo } from "./logo";
+import { navItems } from "@/constants";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { useEffect, useState } from "react";
-import { motion, useAnimate } from "motion/react";
-import { navItems } from "@/constants";
-import { Logo } from "./logo";
+import SocialIcon from "./social-icon";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [topLineScope, topLineAnimate] = useAnimate();
-  const [bottomLineScope, bottomLineAnimate] = useAnimate();
-  const [navScope, navAnimate] = useAnimate();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
-      navAnimate(
-        navScope.current,
-        {
-          height: "100%",
-        },
-        { duration: 0.7 }
-      );
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 1);
+    };
 
-      topLineAnimate([
-        [
-          topLineScope.current,
-          {
-            translateY: 4,
-          },
-        ],
-        [
-          topLineScope.current,
-          {
-            rotate: 45,
-          },
-        ],
-      ]);
-
-      bottomLineAnimate([
-        [
-          bottomLineScope.current,
-          {
-            translateY: -4,
-          },
-        ],
-        [
-          bottomLineScope.current,
-          {
-            rotate: -45,
-          },
-        ],
-      ]);
-    } else {
-      topLineAnimate([
-        [
-          topLineScope.current,
-          {
-            rotate: 0,
-          },
-        ],
-        [
-          topLineScope.current,
-          {
-            translateY: 0,
-          },
-        ],
-      ]);
-
-      bottomLineAnimate([
-        [
-          bottomLineScope.current,
-          {
-            rotate: 0,
-          },
-        ],
-        [
-          bottomLineScope.current,
-          {
-            translateY: 0,
-          },
-        ],
-      ]);
-
-      navAnimate(navScope.current, {
-        height: 0,
-      });
-    }
-  }, [
-    isOpen,
-    topLineScope,
-    topLineAnimate,
-    bottomLineScope,
-    bottomLineAnimate,
-    navScope,
-    navAnimate,
-  ]);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleMobileNavClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     setIsOpen(false);
-
-    const url = new URL(event.currentTarget.href);
-    const hash = url.hash;
-
-    const target = document.querySelector(hash);
-    if (!target) return;
-    target.scrollIntoView({ behavior: "smooth" });
+    const target = document.querySelector(event.currentTarget.hash);
+    target?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <header>
-      {/* mobile nav */}
-      <div
-        className="fixed top-0 left-0 w-full h-0 overflow-hidden bg-stone-900 z-20"
-        ref={navScope}
-      >
-        <nav className="mt-20 flex flex-col">
-          {navItems?.map(({ label, href }) => (
-            <div
-              key={label}
-              className="text-stone-200 border-t last:border-b border-stone-600 py-8 group/nav-item relative isolate"
-            >
-              <Link href={href} onClick={handleMobileNavClick}>
-                <div className="container !max-w-full flex items-center justify-between">
-                  <span className="text-3xl group-hover/nav-item:pl-2 transition-all duration-300">
-                    {label}
-                  </span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="size-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-                    />
-                  </svg>
-                </div>
-
-                <div className="absolute w-full h-0 bg-stone-800 group-hover/nav-item:h-full transition-all duration-300 bottom-0 -z-10"></div>
-              </Link>
-            </div>
-          ))}
-        </nav>
-      </div>
-
-      <div className="fixed top-0 left-0 w-full mix-blend-difference backdrop-blur-md z-30">
-        <div className="container !max-w-full">
-          <div className="flex justify-between items-center h-20">
-            <div>
-              <Link href={`/`}>
-                <Logo />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="fixed top-0 left-0 w-full z-20">
-        <div className="container !max-w-full">
-          <div className="flex justify-end items-center h-20">
-            <div className="flex items-center gap-4">
+      <div className="border-b-0 before:hidden after:hidden">
+        {/* Mobile Nav */}
+        <div
+          className={`fixed top-0 left-0 h-full w-full lg:hidden bg-neutral-light z-50 transition-max-height duration-500 ease-in-out ${
+            isOpen ? "max-h-screen" : "max-h-0"
+          } overflow-hidden`}
+        >
+          <nav
+            className="mt-24 flex flex-col"
+            aria-label="mobile navbar"
+            data-orientation="vertical"
+          >
+            {navItems?.map(({ label, href }) => (
               <div
-                onClick={() => setIsOpen(!isOpen)}
-                className="cursor-pointer size-11 border border-stone-400 rounded-full inline-flex justify-center items-center bg-stone-200"
+                key={label}
+                className="text-neutral-darker border-t last:border-b border-neutral-dark py-8 group/nav-item relative isolate"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <motion.rect
-                    x="3"
-                    y="7"
-                    width="18"
-                    height="2"
-                    fill="currentColor"
-                    ref={topLineScope}
-                    style={{
-                      transformOrigin: "12px 8px",
-                      // transform: "translateY(4px) rotate(45deg)",
-                    }}
-                  />
-                  <motion.rect
-                    x="3"
-                    y="15"
-                    width="18"
-                    height="2"
-                    fill="currentColor"
-                    ref={bottomLineScope}
-                    style={{
-                      transformOrigin: "12px 16px",
-                      // transform: "translateY(-4px) rotate(-45deg)",
-                    }}
-                  />
-                </svg>
+                <Link href={href} onClick={handleMobileNavClick}>
+                  <div className="container !max-w-full flex items-center justify-between px-6">
+                    <span className="text-3xl group-hover/nav-item:pl-2 transition-all duration-300">
+                      {label}
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="size-6 transition-transform duration-300 group-hover/nav-item:translate-x-1"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                      />
+                    </svg>
+                  </div>
+                  <div className="absolute w-full h-0 bg-neutral-medium transition-all duration-300 group-hover/nav-item:h-full bottom-0 -z-10" />
+                </Link>
               </div>
+            ))}
 
-              <Link href={`#contact`} className="hidden md:inline-flex">
-                <Button className="" variant={`contact`} size={`xl`}>
-                  Contact Me
-                </Button>
-              </Link>
+            <div className="absolute bottom-12 w-full">
+              <div className="flex items-center justify-around">
+                <SocialIcon
+                  type="github"
+                  href="https://github.com/yourusername"
+                />
+                <SocialIcon
+                  type="linkedin"
+                  href="https://linkedin.com/in/yourprofile"
+                />
+                <SocialIcon
+                  type="instagram"
+                  href="https://instagram.com/in/yourprofile"
+                />
+              </div>
             </div>
+          </nav>
+        </div>
+        <div
+          className={`w-full max-w-[1440px] px-4 md:px-[34px] fixed left-1/2 top-0 z-50 mx-auto mb-8 flex -translate-x-1/2 items-center justify-between py-5 lg:mt-2 lg:max-w-[min(1150px,calc(100vw-24px))] lg:rounded-2xl lg:py-0 before:shadow-fade before:absolute before:inset-0 before:z-[-1] before:bg-white before:transition-opacity before:duration-300 lg:before:rounded-2xl bg-primary-50/95 border-0 before:block ${
+            isScrolled
+              ? "before:opacity-100 before:border-0 shadow-sm"
+              : "before:opacity-0 before:border"
+          }`}
+        >
+          <div className="flex cursor-pointer rtl:relative rtl:top-3">
+            <Logo />
+          </div>
+
+          {/* desktop nav */}
+          <nav
+            aria-label="desktop navbar"
+            data-orientation="horizontal"
+            dir="ltr"
+            className="hidden lg:block"
+          >
+            <div className="font-matter relative z-20">
+              <div className="relative">
+                <ul
+                  data-orientation="horizontal"
+                  id="nav-items"
+                  className="flex items-center gap-8"
+                  dir="ltr"
+                >
+                  {navItems.slice(0, -1)?.map(({ href, label }, index) => (
+                    <li key={label} className="relative group">
+                      <Link
+                        href={href}
+                        className="text-sm font-medium leading-[22px] text-neutral-dark hover:text-primary transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-primary-foreground after:transition-all after:duration-300 hover:after:w-full px-2 py-1 rounded-lg before:content-[attr(data-number)] before:inline-block before:font-bold before:w-auto before:right-0 before:-top-3 before:leading-[0.6em] before:text-[0.6em] before:absolute before:h-auto before:opacity-75"
+                      >
+                        <span className="relative">
+                          <span className="absolute -right-0 -top-3 text-[0.6em] font-bold opacity-75">
+                            0{index + 1}
+                          </span>
+                          {"//"} {label}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          <div className="flex items-center justify-center">
+            <a href="#contact" className="hidden lg:block">
+              <Button variant={`contact`}>Contact Me</Button>
+            </a>
+
+            <button
+              className="p-2 hover:cursor-pointer lg:hidden"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+            >
+              <div className="relative h-4 w-4">
+                <span
+                  className={`absolute left-0 top-0 h-[1.5px] w-4 bg-neutral-darker transition-all duration-500 ease-in-out ${
+                    isOpen ? "rotate-45 translate-y-[7px]" : "rotate-0"
+                  }`}
+                ></span>
+                <span
+                  className={`absolute left-0 top-[7px] h-[1.5px] w-4 bg-neutral-darker transition-all duration-500 ease-in-out ${
+                    isOpen ? "opacity-0" : "opacity-100"
+                  }`}
+                ></span>
+                <span
+                  className={`absolute left-0 top-[14px] h-[1.5px] w-4 bg-neutral-darker transition-all duration-500 ease-in-out ${
+                    isOpen ? "-rotate-45 -translate-y-[7px]" : "rotate-0"
+                  }`}
+                ></span>
+              </div>
+            </button>
           </div>
         </div>
       </div>
