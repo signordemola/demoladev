@@ -10,10 +10,10 @@ const Footer = () => {
 
   return (
     <footer
-      className="bg-neutral-darker text-neutral-light px-4 pt-16 pb-8 font-inter"
+      className="bg-neutral-darker text-neutral-light px-4 pb-8 font-inter scroll-mt-[6rem] lg:scroll-mt-18"
       id="contact"
     >
-      <div className="max-w-[1200px] mx-auto">
+      <div className="max-w-[1200px] mx-auto pt-20 lg:pt-24">
         <div className="">
           <div className="section">
             <Headline emoji="🤙" text="Sold Yet?" />
@@ -64,7 +64,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="py-16 relative">
+        <div className="pt-20 pb-24 relative">
           <p className="absolute bottom-[1rem] text-xs text-neutral- text-wrap pr-2 md:pr-0">
             Copyright &copy; DemolaDev {year} &bull; All rights reserved
           </p>
