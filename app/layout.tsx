@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import Preloader from "@/components/preloader";
 
 const inter = Inter({
   weight: ["400", "500", "600", "700", "800"],
@@ -75,10 +72,7 @@ export default function RootLayout({
       <body
         className={`${inter.className}  ${poppins.className} bg-neutral-medium text-neutral-darker antialiased`}
       >
-        <Preloader />
-        <Header />
-        <div className="mx-auto max-w-[1200px]">{children}</div>
-        <Footer />
+        {children}
       </body>
     </html>
   );

@@ -9,7 +9,11 @@ const Hero = () => {
   return (
     <section id="home" className="mx-3 md:mx-0">
       <div className="mx-auto relative px-2 max-w-[1200px] gap-8 rounded-xl shadow-sm bg-white mb-1 overflow-hidden lg:px-8 py-4 md:py-8 md:pt-12 lg:pt-20">
-        <div className="flex flex-col pb-4 items-center text-center mb-2">
+        <div
+          data-scroll
+          data-scroll-speed="0.3"
+          className="flex flex-col pb-4 items-center text-center mb-2"
+        >
           <Headline emoji="✌🏻" text="Hi there! I'm Adedamola" />
           <h1 className="font-satoshi font-bold tracking-wide text-[40px] leading-none md:text-[65px] lg:text-[60px] xl:text-[69px] pb-3">
             <span
@@ -31,7 +35,11 @@ const Hero = () => {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 lg:gap-8">
+        <div
+          data-scroll
+          data-scroll-speed="0.2"
+          className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 lg:gap-8"
+        >
           <Link href="#projects">
             <CustomButton
               variant="projects"
@@ -81,7 +89,11 @@ const Hero = () => {
           </Link>
         </div>
 
-        <div className="relative z-[2] mx-auto translate-y-[10%]">
+        <div
+          className="relative z-[2] mx-auto translate-y-[10%]"
+          data-scroll
+          data-scroll-speed="0.1"
+        >
           <div className="animate-slide-down origin-center transform rounded-xl bg-neutral-medium p-1 transition-all duration-1000 ease-out border border-neutral-dark/20">
             <video
               autoPlay
