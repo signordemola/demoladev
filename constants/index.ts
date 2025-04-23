@@ -1,11 +1,3 @@
-import {
-  LayoutDashboard,
-  Briefcase,
-  MessageSquare,
-  HelpCircle,
-  GroupIcon,
-} from "lucide-react";
-
 export const testimonials = [
   {
     name: "Chinwe Okoro",
@@ -90,30 +82,59 @@ export const navItems = [
   },
 ];
 
-export const adminNavLink = [
+export const projects = [
   {
-    label: "Dashboard",
-    href: "/dashboard",
-    icon: LayoutDashboard,
+    title: "OnFoot Shoe Store",
+    description:
+      "See what’s happening with OnFoot Store. Check out the latest innovations, top performance styles & featured stories.",
+    imageSrc:
+      "https://res.cloudinary.com/djfhuinba/image/upload/v1745078384/on-foot_wjywjc.png",
+    projectLink: "https://on-foot-six.vercel.app/",
+    color: "#1D7F4B",
   },
   {
-    label: "Projects",
-    href: "/projects",
-    icon: Briefcase,
+    title: "Colonial Furniture",
+    description:
+      "Cherry Dining Room Solid Wood Furniture makers Colonial Furniture Pennsylvania House Furniture Cherry Bedroom",
+    imageSrc:
+      "https://res.cloudinary.com/djfhuinba/image/upload/v1745078614/colonial_sjkmik.png",
+    projectLink: "https://colonial-new.vercel.app/",
+    color: "#1A6A6A",
   },
   {
-    label: "Testimonials",
-    href: "/testimonials",
-    icon: MessageSquare,
+    title: "De Brauw Blackstone",
+    description:
+      "De Brauw is a leading international law firm. Rooted deeply in the Dutch tradition of problem-solving & innovation.",
+    imageSrc:
+      "https://res.cloudinary.com/djfhuinba/image/upload/v1745078755/debrauwv_l4vtpw.png",
+    projectLink: "https://firm-app.vercel.app/",
+    color: "#C2491D",
   },
   {
-    label: "FAQs",
-    href: "/faqs",
-    icon: HelpCircle,
+    title: "CarePulse Health",
+    description:
+      "A premier network of skilled nursing, rehabilitation and senior care services with locations all over the country.",
+    imageSrc:
+      "https://res.cloudinary.com/djfhuinba/image/upload/v1745078961/healthcare_kcggtn.png",
+    projectLink: "https://healthcare-eta-three.vercel.app/",
+    color: "#B62429",
   },
   {
-    label: "Clients",
-    href: "/clients",
-    icon: GroupIcon,
+    title: "Zenbrew Coffee",
+    description:
+      "Experience the joy of exceptional coffee in our cozy space, where every cup is crafted with passion and warmth",
+    imageSrc:
+      "https://res.cloudinary.com/djfhuinba/image/upload/v1745079161/zenbrew_uy3xbu.png",
+    projectLink: "https://coffeeandjoy.vercel.app/",
+    color: "#88A28D",
+  },
+  {
+    title: "Hk Insulation Inc.",
+    description:
+      "Specializes in delivering state-of-the-art insulation services to apartments, hotels & commercial establishments.",
+    imageSrc:
+      "https://res.cloudinary.com/djfhuinba/image/upload/v1745092192/hkins_g49tca.png",
+    projectLink: "https://hkinsulation.vercel.app/",
+    color: "#7F4B1D",
   },
 ];

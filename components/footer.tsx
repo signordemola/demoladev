@@ -9,8 +9,10 @@ const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <footer
-      className="bg-neutral-darker text-neutral-light scroll-mt-30 lg:scroll-mt-18"
+      className="bg-neutral-darker text-neutral-light"
       id="contact"
+      data-scroll
+      data-scroll-speed="0.3"
     >
       <div className="max-w-[1200px] mx-auto px-6 py-18 relative">
         <div className="section">

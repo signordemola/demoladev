@@ -2,8 +2,6 @@ const About = () => {
   return (
     <section
       id="about"
-      data-scroll
-      data-scroll-speed="0.2"
       className="cross-corners mt-8 mx-2 rounded-md border border-neutral-dark/20 scroll-mt-[6rem] md:scroll-mt-[7rem] lg:scroll-mt-22"
     >
       <div className="mx-auto max-w-[1200px] gap-8 overflow-hidden p-6">
