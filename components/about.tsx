@@ -18,7 +18,7 @@ const About = () => {
               data-scroll-speed="0.1"
             >
               Building beautiful websites with clean code and thoughtful design
-              to help your brand grow and stand out online...
+              to help your brand grow and stand out online
             </h2>
           </div>
         </div>
