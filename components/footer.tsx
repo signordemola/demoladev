@@ -48,7 +48,7 @@ const Footer = () => {
             <div className="md:col-span-2">
               <h2
                 id="footer-heading"
-                className="text-3xl md:text-5xl lg:text-8xl font-satoshi mt-8 font-extralight"
+                className="text-4xl md:text-6xl lg:text-8xl font-satoshi mt-8 font-extralight"
                 aria-label="Call to action for collaboration"
               >
                 {"Enough talk, let's make something great together."}
