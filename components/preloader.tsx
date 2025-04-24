@@ -67,7 +67,7 @@ const Preloader = () => {
       variants={slideUp}
       initial="initial"
       exit="exit"
-      className="h-screen w-screen flex items-center justify-center fixed z-[999] bg-neutral-light"
+      className="h-screen w-screen flex items-center justify-center fixed z-[999] bg-neutral-darker"
     >
       {dimension.width > 0 && (
         <>
@@ -77,7 +77,7 @@ const Preloader = () => {
             animate="enter"
             className="flex text-white text-[42px] items-center absolute z-[1]"
           >
-            <span className="block w-2.5 h-2.5 bg-white rounded-full mr-2.5"></span>
+            <span className="block w-2.5 h-2.5 bg-primary rounded-full mr-2.5"></span>
             {words[index]}
           </motion.p>
           <svg className="absolute top-0 w-full h-[calc(100%+300px)]">

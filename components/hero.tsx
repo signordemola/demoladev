@@ -95,7 +95,7 @@ const Hero = () => {
               preload="metadata"
               aria-label="Website development process demonstration"
               className="w-full h-full md:h-[580px] object-cover backdrop-blur-2xl rounded-md"
-              poster="/poster.PNG"
+              poster="/poster.webp"
             >
               <source
                 src="https://res.cloudinary.com/djfhuinba/video/upload/v1745017812/infography_wvpf2h.mp4"
