@@ -10,8 +10,16 @@ const Hero = () => {
     <section id="home" className="mx-4 md:mx-0" aria-labelledby="hero-heading">
       <div className="mx-auto relative px-2 max-w-[1200px] gap-8 rounded-xl shadow-sm bg-white mb-1 overflow-hidden lg:px-8 py-4 md:py-8 md:pt-12 lg:pt-20">
         <div className="flex flex-col pb-4 items-center text-center mb-2">
-          <Headline emoji="✌🏻" text="Hi there! I'm Adedamola" />
-          <h1 className="font-satoshi font-bold tracking-wide text-[40px] leading-none md:text-[65px] lg:text-[60px] xl:text-[69px] pb-3">
+          <Headline
+            emoji="✌🏻"
+            text="Hi there! I'm Adedamola"
+            ariaLabel="Welcome hand emoji"
+          />
+          <h1
+            role="text"
+            aria-label="Launch or Transform your brand's website"
+            className="font-satoshi font-bold tracking-wide text-[40px] leading-none md:text-[65px] lg:text-[60px] xl:text-[69px] pb-3"
+          >
             <span
               data-br=":r7:"
               data-brr="1"
@@ -36,6 +44,8 @@ const Hero = () => {
             <CustomButton
               variant="projects"
               aria-label="View my work portfolio"
+              role="button"
+              aria-hidden="true"
               icon={
                 <div className="overflow-hidden size-5">
                   <div className="h-5 w-10 flex group-hover/button:-translate-x-1/2 transition-transform duration-500">
@@ -79,6 +89,8 @@ const Hero = () => {
             <CustomButton
               variant="primary"
               aria-label="Contact me to start a project"
+              role="button"
+              aria-hidden="true"
             >
               Let&apos;s Make It Happen
             </CustomButton>

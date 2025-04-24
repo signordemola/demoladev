@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export const opacity = {
-  initial: {
-    opacity: 0,
-  },
+  initial: { opacity: 0 },
   enter: {
     opacity: 0.75,
     transition: { duration: 1, delay: 0.2 },
@@ -14,9 +12,7 @@ export const opacity = {
 };
 
 export const slideUp = {
-  initial: {
-    top: 0,
-  },
+  initial: { top: 0 },
   exit: {
     top: "-100vh",
     transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
@@ -34,13 +30,12 @@ const Preloader = () => {
   }, []);
 
   useEffect(() => {
-    if (index == words.length - 1) return;
-    setTimeout(
-      () => {
-        setIndex(index + 1);
-      },
-      index == 0 ? 1000 : 150
+    if (index === words.length - 1) return;
+    const timer = setTimeout(
+      () => setIndex(index + 1),
+      index === 0 ? 1000 : 150
     );
+    return () => clearTimeout(timer);
   }, [index]);
 
   const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
@@ -62,12 +57,15 @@ const Preloader = () => {
       transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
     },
   };
+
   return (
     <motion.div
       variants={slideUp}
       initial="initial"
       exit="exit"
       className="h-screen w-screen flex items-center justify-center fixed z-[999] bg-neutral-darker"
+      role="alert"
+      aria-live="assertive"
     >
       {dimension.width > 0 && (
         <>
@@ -76,17 +74,24 @@ const Preloader = () => {
             initial="initial"
             animate="enter"
             className="flex text-white text-[42px] items-center absolute z-[1]"
+            aria-label={`Loading: ${words[index]}`}
           >
-            <span className="block w-2.5 h-2.5 bg-primary rounded-full mr-2.5"></span>
-            {words[index]}
+            <span
+              className="block w-2.5 h-2.5 bg-primary rounded-full mr-2.5"
+              aria-hidden="true"
+            />
+            <span role="status">{words[index]}</span>
           </motion.p>
-          <svg className="absolute top-0 w-full h-[calc(100%+300px)]">
+          <svg
+            className="absolute top-0 w-full h-[calc(100%+300px)]"
+            aria-hidden="true"
+          >
             <motion.path
               variants={curve}
               initial="initial"
               exit="exit"
               className="fill-[#141516]"
-            ></motion.path>
+            />
           </svg>
         </>
       )}

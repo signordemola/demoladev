@@ -14,13 +14,16 @@ const Footer = dynamic(() => import("@/components/footer"));
 const Header = dynamic(() => import("@/components/header"));
 const Hero = dynamic(() => import("@/components/hero"), {
   loading: () => (
-    <div className="h-[100dvh] bg-neutral-dark text-neutral-light animate-pulse rounded-xl">
-      Loading...
+    <div
+      className="h-[100dvh] bg-neutral-dark text-neutral-light animate-pulse rounded-xl"
+      role="status"
+      aria-label="Loading hero section"
+    >
+      <span className="sr-only">Loading...</span>
     </div>
   ),
 });
 const Projects = dynamic(() => import("@/components/projects"));
-const Testimonials = dynamic(() => import("@/components/testimonials"));
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -35,14 +38,31 @@ export default function Home() {
       <AnimatePresence mode="wait">
         {isLoading && <Preloader />}
       </AnimatePresence>
+
+      {/* Skip to content link for screen readers */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:bg-white focus:p-4 focus:rounded-lg focus:z-[1000]"
+      >
+        Skip to main content
+      </a>
+
       <Header />
-      <main className="mx-auto max-w-[1200px]">
-        <div className="pt-22 px-1 border-l border-r border-neutral-dark/10">
+      <main
+        id="main-content"
+        className="mx-auto max-w-[1200px]"
+        role="main"
+        aria-label="Main content"
+      >
+        <div
+          className="pt-22 px-1 border-l border-r border-neutral-dark/10"
+          role="region"
+          aria-label="Page sections"
+        >
           <Hero />
           <About />
           <Projects />
           <Features />
-          <Testimonials />
           <Faqs />
         </div>
       </main>
