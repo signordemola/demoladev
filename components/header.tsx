@@ -28,13 +28,16 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <header aria-label="Header Section">
       <div className="border-b-0 before:hidden after:hidden">
         {/* Mobile Nav */}
         <div
           className={`fixed top-0 left-0 h-full w-full lg:hidden bg-neutral-light z-50 transition-max-height duration-500 ease-in-out ${
             isOpen ? "max-h-screen" : "max-h-0"
           } overflow-hidden`}
+          aria-hidden={!isOpen}
+          role="dialog"
+          aria-modal="true"
         >
           <nav
             className="mt-20 flex flex-col"
@@ -49,7 +52,7 @@ const Header = () => {
                 <Link
                   href={href}
                   onClick={handleMobileNavClick}
-                  aria-label={`${label} section`}
+                  aria-label={`Navigate to ${label} section`}
                 >
                   <div className="container !max-w-full flex items-center justify-between px-6">
                     <span className="text-3xl group-hover/nav-item:pl-2 transition-all duration-300">
@@ -71,23 +74,31 @@ const Header = () => {
                     </svg>
                   </div>
                   <div className="absolute w-full h-0 bg-neutral-medium transition-all duration-300 group-hover/nav-item:h-full bottom-0 -z-10" />
+                  <span className="sr-only">Open {label} section</span>
                 </Link>
               </div>
             ))}
 
-            <div className="absolute bottom-12 w-full">
+            <div
+              className="absolute bottom-12 w-full"
+              role="region"
+              aria-label="Social links"
+            >
               <div className="flex items-center justify-around">
                 <SocialIcon
                   type="github"
                   href="https://github.com/yourusername"
+                  aria-label="GitHub profile (opens in new tab)"
                 />
                 <SocialIcon
                   type="linkedin"
                   href="https://linkedin.com/in/yourprofile"
+                  aria-label="LinkedIn profile (opens in new tab)"
                 />
                 <SocialIcon
                   type="instagram"
                   href="https://instagram.com/in/yourprofile"
+                  aria-label="Instagram profile (opens in new tab)"
                 />
               </div>
             </div>
@@ -99,6 +110,8 @@ const Header = () => {
               ? "before:opacity-100 before:border-0 shadow-sm"
               : "before:opacity-0 before:border"
           }`}
+          role="navigation"
+          aria-label="Main header"
         >
           <div className="flex cursor-pointer rtl:relative rtl:top-3">
             <Logo />
@@ -106,7 +119,7 @@ const Header = () => {
 
           {/* desktop nav */}
           <nav
-            aria-label="desktop navbar"
+            aria-label="Primary navigation"
             data-orientation="horizontal"
             dir="ltr"
             className="hidden lg:block"
@@ -141,9 +154,13 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center justify-center">
-            <a href="#contact" className="hidden lg:block">
+            <Link
+              href="#contact"
+              className="hidden lg:block"
+              aria-label="Contact me (opens contact section)"
+            >
               <Button variant={`contact`}>Contact Me</Button>
-            </a>
+            </Link>
 
             <button
               className="p-2 hover:cursor-pointer lg:hidden"

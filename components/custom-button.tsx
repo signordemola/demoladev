@@ -1,29 +1,43 @@
+// CustomButton.tsx
 import React, { ButtonHTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-const CustomButton = (
-  props: {
-    variant: "primary" | "secondary" | "text" | "projects";
-    icon?: ReactNode;
-  } & ButtonHTMLAttributes<HTMLButtonElement>
-) => {
-  const { className, children, variant, icon, ...rest } = props;
+type ButtonVariant = "primary" | "secondary" | "text" | "projects";
+
+interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant: ButtonVariant;
+  icon?: ReactNode;
+}
+
+const CustomButton = ({
+  className,
+  children,
+  variant,
+  icon,
+  ...rest
+}: CustomButtonProps) => {
+  const baseStyles =
+    "relative group/button h-11 px-6 rounded-xl uppercase inline-flex items-center gap-2 transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2";
+
+  const variantStyles = {
+    primary:
+      "bg-neutral-medium hover:bg-neutral-dark/20 text-neutral-dark border-2 border-neutral-ddarker",
+    secondary:
+      "hover:bg-primary hover:text-white bg-transparent border border-primary",
+    text: "h-auto text-primary px-0 border-transparent after:content-[''] after:transition-all after:duration-300 after:h-px after:w-0 after:absolute after:top-full after:bg-primary hover:after:w-full",
+    projects:
+      "border border-neutral-darker bg-neutral-dark py-4 text-white font-medium hover:bg-opacity-90 shadow-lg backdrop-blur-sm",
+  };
+
   return (
     <button
-      className={twMerge(
-        "relative group/button h-11 px-6 rounded-xl uppercase inline-flex items-center gap-2 transition duration-500 cursor-pointer",
-        variant === "primary" && "bg-neutral-medium hover:bg-neutral-dark/20 text-neutral-dark border-2 border-neutral-ddarker",
-        variant === "secondary" && "hover:bg-primary hover:text-white",
-        variant === "text" &&
-          "h-auto text-primary px-0 border-transparent after:content-[''] after:transition-all after:duration-500 after:h-px after:w-0 after:absolute after:top-full after:bg-primary hover:after:w-full",
-        variant === "projects" &&
-          "border border-neutral-darker bg-neutral-dark py-4 text-white font-medium hover:bg-opacity-90 transition-all shadow-lg backdrop-blur-sm",
-        className
-      )}
+      className={twMerge(baseStyles, variantStyles[variant], className)}
       {...rest}
     >
-      <span>{children}</span>
-      {icon && <span>{icon}</span>}
+      <span className="inline-flex items-center gap-2">
+        {children}
+        {icon && <span className="shrink-0">{icon}</span>}
+      </span>
     </button>
   );
 };

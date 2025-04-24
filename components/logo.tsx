@@ -3,6 +3,7 @@ import Link from "next/link";
 export const Logo = () => (
   <Link
     href="/"
+    aria-label="Home page"
     className="group hover:[&>svg]:[filter:drop-shadow(0_0_8px_rgba(99,102,241,0.3))]"
   >
     <svg

@@ -12,23 +12,20 @@ const Faqs = dynamic(() => import("@/components/faqs"));
 const Features = dynamic(() => import("@/components/features"));
 const Footer = dynamic(() => import("@/components/footer"));
 const Header = dynamic(() => import("@/components/header"));
-const Hero = dynamic(() => import("@/components/hero"));
+const Hero = dynamic(() => import("@/components/hero"), {
+  loading: () => (
+    <div className="h-[100dvh] bg-neutral-light/20 animate-pulse rounded-xl" />
+  ),
+});
 const Projects = dynamic(() => import("@/components/projects"));
 const Testimonials = dynamic(() => import("@/components/testimonials"));
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setIsLoading(true);
-
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-
-    return () => {
-      clearTimeout(timer);
-    };
+    const timer = setTimeout(() => setIsLoading(false), 3000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (

@@ -70,7 +70,13 @@ const ProjectCard = ({
                   width={1000}
                   height={1000}
                   className="object-cover"
-                  rel="preload"
+                  sizes="(max-width: 768px) 100vw, 
+                        (max-width: 1200px) 60vw,
+                        1000px"
+                  quality={85}
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+yHgAFWAJp08sG7wAAAABJRU5ErkJggg=="
+                  priority={i < 3}
                 />
               </motion.div>
             </div>

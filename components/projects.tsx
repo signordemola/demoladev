@@ -14,7 +14,7 @@ const Projects = () => {
   });
 
   return (
-    <section ref={container} id="projects" className="mt-20 mx-4 scroll-mt-38">
+    <section ref={container} id="projects" className="mt-20 mx-4 scroll-mt-38" aria-labelledby="projects section">
       <div className="mx-auto max-w-[1200px] px-4 md:px-6 lg:px-8 bg-neutral-light py-6 border border-neutral-dark/20 rounded-md">
         <div className="flex justify-center sticky top-24 md:top-20 lg:top-18">
           <Headline emoji="💼" text="Featured Projects" />

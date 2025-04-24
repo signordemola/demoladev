@@ -7,7 +7,7 @@ import Headline from "./headline";
 
 const Hero = () => {
   return (
-    <section id="home" className="mx-4 md:mx-0">
+    <section id="home" className="mx-4 md:mx-0" aria-labelledby="hero-heading">
       <div className="mx-auto relative px-2 max-w-[1200px] gap-8 rounded-xl shadow-sm bg-white mb-1 overflow-hidden lg:px-8 py-4 md:py-8 md:pt-12 lg:pt-20">
         <div className="flex flex-col pb-4 items-center text-center mb-2">
           <Headline emoji="✌🏻" text="Hi there! I'm Adedamola" />
@@ -35,6 +35,7 @@ const Hero = () => {
           <Link href="#projects">
             <CustomButton
               variant="projects"
+              aria-label="View my work portfolio"
               icon={
                 <div className="overflow-hidden size-5">
                   <div className="h-5 w-10 flex group-hover/button:-translate-x-1/2 transition-transform duration-500">
@@ -75,7 +76,10 @@ const Hero = () => {
           </Link>
 
           <Link href="#contact" className="flex justify-center">
-            <CustomButton variant="primary">
+            <CustomButton
+              variant="primary"
+              aria-label="Contact me to start a project"
+            >
               Let&apos;s Make It Happen
             </CustomButton>
           </Link>
@@ -88,12 +92,16 @@ const Hero = () => {
               loop
               muted
               playsInline
-              className="w-full h-full md:h-[580px] md:object-cover backdrop-blur-2xl rounded-md"
+              preload="metadata"
+              aria-label="Website development process demonstration"
+              className="w-full h-full md:h-[580px] object-cover backdrop-blur-2xl rounded-md"
+              poster="/poster.PNG"
             >
               <source
                 src="https://res.cloudinary.com/djfhuinba/video/upload/v1745017812/infography_wvpf2h.mp4"
                 type="video/mp4"
               />
+              <track kind="captions" srcLang="en" label="English captions" />
             </video>
           </div>
         </div>
