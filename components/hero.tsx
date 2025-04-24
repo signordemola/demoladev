@@ -25,7 +25,7 @@ const Hero = () => {
               Launch or Transform your {`brand's website`}
             </span>
           </h1>
-          <p className="max-w-md text-base text-[#898989] lg:max-w-2xl lg:text-lg p-2 md:p-0">
+          <p className="max-w-md text-base text-neutral-medium lg:max-w-2xl lg:text-lg p-2 md:p-0">
             A fully customizable & standout website that captivate audiences and
             elevate your vision
           </p>

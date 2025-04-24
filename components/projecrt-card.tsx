@@ -53,9 +53,9 @@ const ProjectCard = ({
         }}
         className="w-[100%] md:w-[1000px] h-[420px] md:h-[470px] lg:h-[500px] relative rounded-md -top-1/4 origin-top"
       >
-        <h6 className="text-center font-semibold text-neutral-light text-xl md:text-2xl lg:text-4xl mt-6 md:mt-8">
+        <p className="text-center font-semibold text-neutral-light text-xl md:text-2xl lg:text-4xl mt-6 md:mt-8">
           {title}
-        </h6>
+        </p>
 
         <Link href={projectLink} target="_blank" className="w-fit">
           <div className="flex flex-col md:flex-row gap-4 md:gap-2 lg:gap-6 mt-4 md:mt-[50px] h-[calc(100%-80px)] px-4 md:px-6">
