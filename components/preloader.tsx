@@ -23,14 +23,7 @@ export const slideUp = {
   },
 };
 
-const words = [
-  'Create',
-  'Impact',
-  'Innovate',
-  'Inspire',
-  'Build',
-  'Succeed',
-];
+const words = ["Create", "Impact", "Innovate", "Inspire", "Build", "Succeed"];
 
 const Preloader = () => {
   const [index, setIndex] = useState(0);
@@ -74,7 +67,7 @@ const Preloader = () => {
       variants={slideUp}
       initial="initial"
       exit="exit"
-      className="h-screen w-screen flex items-center justify-center fixed z-[999] bg-neutral-medium"
+      className="h-screen w-screen flex items-center justify-center fixed z-[999] bg-neutral-light"
     >
       {dimension.width > 0 && (
         <>

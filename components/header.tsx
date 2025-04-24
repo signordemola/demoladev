@@ -162,29 +162,32 @@ const Header = () => {
               <Button variant={`contact`}>Contact Me</Button>
             </Link>
 
-            <button
-              className="p-2 hover:cursor-pointer lg:hidden"
+            <Button
+              className="p-4 hover:cursor-pointer lg:hidden"
+              variant={`menu`}
+              size={`xl`}
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? "Close menu" : "Open menu"}
+              role="button"
             >
               <div className="relative h-4 w-4">
                 <span
-                  className={`absolute left-0 top-0 h-[1.5px] w-4 bg-neutral-darker transition-all duration-500 ease-in-out ${
+                  className={`absolute left-0 top-0 h-[1.5px] w-4 bg-neutral-medium transition-all duration-500 ease-in-out ${
                     isOpen ? "rotate-45 translate-y-[7px]" : "rotate-0"
                   }`}
                 ></span>
                 <span
-                  className={`absolute left-0 top-[7px] h-[1.5px] w-4 bg-neutral-darker transition-all duration-500 ease-in-out ${
+                  className={`absolute left-0 top-[7px] h-[1.5px] w-4 bg-neutral-medium transition-all duration-500 ease-in-out ${
                     isOpen ? "opacity-0" : "opacity-100"
                   }`}
                 ></span>
                 <span
-                  className={`absolute left-0 top-[14px] h-[1.5px] w-4 bg-neutral-darker transition-all duration-500 ease-in-out ${
+                  className={`absolute left-0 top-[14px] h-[1.5px] w-4 bg-neutral-medium transition-all duration-500 ease-in-out ${
                     isOpen ? "-rotate-45 -translate-y-[7px]" : "rotate-0"
                   }`}
                 ></span>
               </div>
-            </button>
+            </Button>
           </div>
         </div>
       </div>

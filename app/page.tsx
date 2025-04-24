@@ -14,7 +14,9 @@ const Footer = dynamic(() => import("@/components/footer"));
 const Header = dynamic(() => import("@/components/header"));
 const Hero = dynamic(() => import("@/components/hero"), {
   loading: () => (
-    <div className="h-[100dvh] bg-neutral-light/20 animate-pulse rounded-xl" />
+    <div className="h-[100dvh] bg-neutral-dark text-neutral-light animate-pulse rounded-xl">
+      Loading...
+    </div>
   ),
 });
 const Projects = dynamic(() => import("@/components/projects"));

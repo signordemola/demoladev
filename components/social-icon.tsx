@@ -15,7 +15,7 @@ const SocialIcon = ({
   className = "",
   size = 24,
 }: SocialIconProps) => {
-  const iconClass = `text-accent hover:text-accent-foreground transition-colors duration-300 ${className}`;
+  const iconClass = `text-primary hover:text-primary-foreground transition-colors duration-300 ${className}`;
 
   const getIcon = () => {
     switch (type) {
