@@ -57,24 +57,28 @@ const ProjectCard = ({
           {title}
         </h6>
 
-        <div className="flex flex-col md:flex-row gap-4 md:gap-2 lg:gap-6 mt-4 md:mt-[50px] h-[calc(100%-80px)] px-4 md:px-6">
-          <div className="relative w-full md:w-[60%] h-[220px] md:h-full rounded-md overflow-hidden order-1 md:order-2">
-            <motion.div className="w-full h-full" style={{ scale: imageScale }}>
-              <Image
-                src={imageSrc}
-                alt={title}
-                width={1000}
-                height={1000}
-                className="object-cover"
-              />
-            </motion.div>
-          </div>
+        <Link href={projectLink} target="_blank" className="w-fit">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-2 lg:gap-6 mt-4 md:mt-[50px] h-[calc(100%-80px)] px-4 md:px-6">
+            <div className="relative w-full md:w-[60%] h-[220px] md:h-full rounded-md overflow-hidden order-1 md:order-2">
+              <motion.div
+                className="w-full h-full"
+                style={{ scale: imageScale }}
+              >
+                <Image
+                  src={imageSrc}
+                  alt={title}
+                  width={1000}
+                  height={1000}
+                  className="object-cover"
+                />
+              </motion.div>
+            </div>
 
-          <div className="w-full md:w-[40%] flex flex-col gap-2 md:gap-6 order-2 md:order-1">
-            <p className="text-xs md:text-xl lg:text-3xl text-neutral-medium">
-              {description}
-            </p>
-            <Link href={projectLink} target="_blank" className="w-fit">
+            <div className="w-full md:w-[40%] flex flex-col gap-2 md:gap-6 order-2 md:order-1">
+              <p className="text-xs md:text-xl lg:text-3xl text-neutral-medium">
+                {description}
+              </p>
+
               <Button variant="secondary" size="sm" className="w-full md:w-fit">
                 Live demo
                 <svg
@@ -91,9 +95,9 @@ const ProjectCard = ({
                   />
                 </svg>
               </Button>
-            </Link>
+            </div>
           </div>
-        </div>
+        </Link>
       </motion.div>
     </div>
   );

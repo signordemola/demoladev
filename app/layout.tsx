@@ -31,16 +31,16 @@ export const metadata: Metadata = {
     "website for small business",
     "professional web design",
   ],
-  authors: [{ name: "Demoladev", url: "https://your-site.vercel.app" }],
+  authors: [{ name: "Demoladev", url: "https://demoladev.vercel.app/" }],
   openGraph: {
     title: "Demoladev | Enterprise Web Solutions",
     description:
       "Tailored websites for companies and business owners—drive growth with a site built for your success.",
-    url: "https://your-site.vercel.app",
+    url: "https://demoladev.vercel.app/",
     siteName: "Demoladev Web Solutions",
     images: [
       {
-        url: "https://your-site.vercel.app/og-image.jpg", // Add later
+        url: "https://demoladev.vercel.app/og-image.jpg", // Add later
         width: 1200,
         height: 630,
         alt: "Demoladev Web Solutions Preview",
@@ -55,10 +55,10 @@ export const metadata: Metadata = {
     description:
       "Need a website that works for your business? I build custom solutions for companies and individuals.",
     creator: "@yourXhandle", // Swap with your X handle
-    images: ["https://your-site.vercel.app/og-image.jpg"],
+    images: ["https://demoladev.vercel.app/og-image.jpg"],
   },
   alternates: {
-    canonical: "https://your-site.vercel.app", // Your Vercel URL
+    canonical: "https://demoladev.vercel.app", // Your Vercel URL
   },
 };
 
