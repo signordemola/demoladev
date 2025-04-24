@@ -46,7 +46,11 @@ const Header = () => {
                 key={label}
                 className="text-neutral-darker border-t last:border-b border-neutral-dark py-8 group/nav-item relative isolate"
               >
-                <Link href={href} onClick={handleMobileNavClick}>
+                <Link
+                  href={href}
+                  onClick={handleMobileNavClick}
+                  aria-label={`${label} section`}
+                >
                   <div className="container !max-w-full flex items-center justify-between px-6">
                     <span className="text-3xl group-hover/nav-item:pl-2 transition-all duration-300">
                       {label}
@@ -119,6 +123,7 @@ const Header = () => {
                     <li key={label} className="relative group">
                       <Link
                         href={href}
+                        aria-label={`${label} section`}
                         className="text-sm font-medium leading-[22px] text-neutral-dark hover:text-primary transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-primary-foreground after:transition-all after:duration-300 hover:after:w-full px-2 py-1 rounded-lg before:content-[attr(data-number)] before:inline-block before:font-bold before:w-auto before:right-0 before:-top-3 before:leading-[0.6em] before:text-[0.6em] before:absolute before:h-auto before:opacity-75"
                       >
                         <span className="relative">

@@ -1,19 +1,20 @@
 "use client";
 
 import { AnimatePresence } from "framer-motion";
-import { lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import Preloader from "@/components/preloader";
+import dynamic from "next/dynamic";
 
-// Lazy loading
-const About = lazy(() => import("@/components/about"));
-const Faqs = lazy(() => import("@/components/faqs"));
-const Features = lazy(() => import("@/components/features"));
-const Footer = lazy(() => import("@/components/footer"));
-const Header = lazy(() => import("@/components/header"));
-const Hero = lazy(() => import("@/components/hero"));
-const Projects = lazy(() => import("@/components/projects"));
-const Testimonials = lazy(() => import("@/components/testimonials"));
+// dynamic loading
+const About = dynamic(() => import("@/components/about"));
+const Faqs = dynamic(() => import("@/components/faqs"));
+const Features = dynamic(() => import("@/components/features"));
+const Footer = dynamic(() => import("@/components/footer"));
+const Header = dynamic(() => import("@/components/header"));
+const Hero = dynamic(() => import("@/components/hero"));
+const Projects = dynamic(() => import("@/components/projects"));
+const Testimonials = dynamic(() => import("@/components/testimonials"));
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);

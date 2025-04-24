@@ -18,8 +18,8 @@ const Footer = () => {
           <Headline emoji="🤙" text="Sold Yet?" />
 
           <div className="grid md:grid-cols-3 md:items-center">
-            <div className="md:col-span-2">
-              <h2 className="text-4xl md:text-7xl lg:text-8xl font-satoshi mt-8 font-extralight">
+            <div className="md:col-span-2 ">
+              <h2 className="text-4xl md:text-7xl lg:text-8xl font-satoshi my-6 font-extralight">
                 {"Enough talk, let's make something great together."}
               </h2>
 

@@ -24,14 +24,12 @@ export const slideUp = {
 };
 
 const words = [
-  "Hello",
-  "Bonjour",
-  "Ciao",
-  "Olà",
-  "やあ",
-  "Hallå",
-  "Guten tag",
-  "Hallo",
+  'Create',
+  'Impact',
+  'Innovate',
+  'Inspire',
+  'Build',
+  'Succeed',
 ];
 
 const Preloader = () => {
@@ -76,7 +74,7 @@ const Preloader = () => {
       variants={slideUp}
       initial="initial"
       exit="exit"
-      className="h-screen w-screen flex items-center justify-center fixed z-[99] bg-neutral-medium"
+      className="h-screen w-screen flex items-center justify-center fixed z-[999] bg-neutral-medium"
     >
       {dimension.width > 0 && (
         <>
