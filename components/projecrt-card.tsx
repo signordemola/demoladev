@@ -42,15 +42,16 @@ const ProjectCard = ({
   return (
     <div
       ref={container}
-      className="h-[70vh] flex items-center justify-center sticky top-0"
+      className="h-[100vh] flex items-center justify-center sticky top-0"
     >
       <motion.div
         style={{
           backgroundColor: color,
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
+          transformOrigin: "top",
         }}
-        className="w-[1000px] h-[300px] md:h-[400px] lg:h-[500px] relative top-[-10%] rounded-md"
+        className="w-[1000px] h-[300px] md:h-[400px] lg:h-[500px] relative rounded-md -top-1/4 origin-top"
       >
         <h6 className="text-center font-semibold text-neutral-light text-xl md:text-2xl lg:text-4xl mt-8">
           {title}

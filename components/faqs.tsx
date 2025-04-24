@@ -12,12 +12,10 @@ const Faqs = () => {
   return (
     <section
       id="faqs"
-       data-scroll
-      data-scroll-speed="0.2"
-      className="scroll-mt-30 lg:scroll-mt-24 cross-corners mt-4 mb-6 bg-neutral-light py-6 rounded-md"
+      className="cross-corners bg-neutral-light rounded-md mt-20 mx-4 lg:mx-2 scroll-mt-38"
     >
       <div className="mx-auto max-w-[1200px] overflow-hidden px-4 md:px-6 lg:px-8">
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center mt-6 mb-2">
           <Headline emoji="🙋🏻‍♂️" text="Got questions?" />
         </div>
         <h2 className="text-3xl md:text-6xl lg:text-7xl pt-2">FAQs</h2>

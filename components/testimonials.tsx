@@ -33,7 +33,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" data-scroll data-scroll-speed="0.3">
+    <section id="testimonials"className="mt-20 mx-4 lg:mx-2 scroll-mt-38">
       <div className="mx-auto max-w-[1200px] overflow-hidden px-4 md:px-6 lg:px-8 bg-neutral-light py-6 border border-neutral-dark/20 rounded-md">
         <div className="flex justify-center items-center pb-2">
           <Headline emoji="😊" text="Mmmm, a little brag" />
