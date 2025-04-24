@@ -76,16 +76,10 @@ const Preloader = () => {
             className="flex text-white text-[42px] items-center absolute z-[1]"
             aria-label={`Loading: ${words[index]}`}
           >
-            <span
-              className="block w-2.5 h-2.5 bg-primary rounded-full mr-2.5"
-              aria-hidden="true"
-            />
+            <span className="block w-2.5 h-2.5 bg-primary rounded-full mr-2.5" />
             <span role="status">{words[index]}</span>
           </motion.p>
-          <svg
-            className="absolute top-0 w-full h-[calc(100%+300px)]"
-            aria-hidden="true"
-          >
+          <svg className="absolute top-0 w-full h-[calc(100%+300px)]">
             <motion.path
               variants={curve}
               initial="initial"

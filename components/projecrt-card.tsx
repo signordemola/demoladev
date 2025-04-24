@@ -43,8 +43,6 @@ const ProjectCard = ({
     <div
       ref={container}
       className="h-[100vh] flex items-center justify-center sticky top-0"
-      role="article"
-      aria-labelledby={`project-${i}-title`}
     >
       <motion.div
         style={{
@@ -54,12 +52,8 @@ const ProjectCard = ({
           transformOrigin: "top",
         }}
         className="w-[100%] md:w-[1000px] h-[420px] md:h-[470px] lg:h-[500px] relative rounded-md -top-1/4 origin-top"
-        aria-label="Project card"
       >
-        <h3
-          id={`project-${i}-title`}
-          className="text-center font-semibold text-neutral-light text-xl md:text-2xl lg:text-4xl mt-6 md:mt-8"
-        >
+        <h3 className="text-center font-semibold text-neutral-light text-xl md:text-2xl lg:text-4xl mt-6 md:mt-8">
           {title}
         </h3>
 
@@ -69,15 +63,11 @@ const ProjectCard = ({
           className="w-fit"
           aria-label={`View ${title} project details`}
         >
-          <div
-            className="flex flex-col md:flex-row gap-4 md:gap-2 lg:gap-6 mt-4 md:mt-[50px] h-[calc(100%-80px)] px-4 md:px-6"
-            role="group"
-          >
+          <div className="flex flex-col md:flex-row gap-4 md:gap-2 lg:gap-6 mt-4 md:mt-[50px] h-[calc(100%-80px)] px-4 md:px-6">
             <div className="relative w-full md:w-[60%] h-[220px] md:h-full rounded-md overflow-hidden order-1 md:order-2">
               <motion.div
                 className="w-full h-full"
                 style={{ scale: imageScale }}
-                aria-hidden="true"
               >
                 <Image
                   src={imageSrc}
@@ -97,7 +87,7 @@ const ProjectCard = ({
             </div>
 
             <div className="w-full md:w-[40%] flex flex-col gap-2 md:gap-6 order-2 md:order-1">
-              <p className="text-xs md:text-xl lg:text-3xl text-neutral-medium">
+              <p className="text-xs md:text-xl lg:text-3xl text-neutral-light">
                 {description}
               </p>
 
@@ -105,6 +95,7 @@ const ProjectCard = ({
                 variant="secondary"
                 size="sm"
                 className="w-full md:w-fit"
+                role="button"
                 aria-label={`Open ${title} live demo`}
               >
                 Live demo

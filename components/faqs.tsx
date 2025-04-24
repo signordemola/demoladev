@@ -13,16 +13,10 @@ const Faqs = () => {
     <section
       id="faqs"
       className="cross-corners bg-neutral-light rounded-md mt-20 mx-4 lg:mx-2 scroll-mt-38"
-      aria-label="Frequently Asked Questions"
-      role="region"
     >
       <div className="mx-auto max-w-[1200px] overflow-hidden px-4 md:px-6 lg:px-8">
         <div className="flex flex-col justify-center items-center mt-6 mb-2">
-          <Headline
-            emoji="🙋🏻‍♂️"
-            text="Got questions?"
-            ariaLabel="Frequently asked questions section"
-          />
+          <Headline emoji="🙋🏻‍♂️" text="Got questions?" />
         </div>
         <h2 className="text-3xl md:text-6xl lg:text-7xl pt-2">FAQs</h2>
 
@@ -35,6 +29,7 @@ const Faqs = () => {
             >
               <button
                 className="w-full flex items-center justify-between gap-4"
+                role="button"
                 onClick={() =>
                   setSelectedIndex((prev) => (prev === index ? null : index))
                 }
@@ -53,7 +48,6 @@ const Faqs = () => {
                     "inline-flex items-center justify-center size-11 border border-stone-400 rounded-full shrink-0 transition duration-500",
                     index === selectedIndex && "rotate-45"
                   )}
-                  aria-hidden="true"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
