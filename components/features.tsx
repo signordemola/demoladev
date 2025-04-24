@@ -1,25 +1,24 @@
 import Headline from "./headline";
 
-const About = () => {
+const Features = () => {
   return (
     <section
-      id="about"
+      id="features"
       className="cross-corners mt-20 mx-4 lg:mx-2 rounded-md border border-neutral-dark/20 scroll-mt-38"
     >
       <div className="mx-auto max-w-[1200px] gap-8 overflow-hidden p-6 bg-neutral-light">
         <div className="border-2 border-neutral-dark rounded-xl">
           <div className="quote">
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Headline emoji="🔥" text="Learn more!" />
+              <Headline emoji="🎁" text="What you get!" />
             </div>
           </div>
           <div className="border-b-2 border-neutral-dark" />
           <div className="px-[20px] py-8">
             <h2 className="text-2xl md:text-4xl lg:text-6xl font-inter font-light">
-              Demoladev Web Solutions specializes in creating custom
-              prosessional websites for businesses, entrepreneurs & individuals.
-              The aim is to help brands grow, streamline operations & stand out
-              online
+              Custom website design, SEO optimization, perfomance-focused
+              development, industry-specific solutions & ongoing support after
+              launch
             </h2>
           </div>
         </div>
@@ -28,4 +27,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Features;

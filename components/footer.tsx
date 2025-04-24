@@ -1,4 +1,4 @@
-import { navItems } from "@/constants";
+
 import Link from "next/link";
 import React from "react";
 import CustomButton from "./custom-button";
@@ -22,6 +22,8 @@ const Footer = () => {
               <h2 className="text-4xl md:text-7xl lg:text-8xl font-satoshi mt-8 font-extralight">
                 {"Enough talk, let's make something great together."}
               </h2>
+
+              
               <CustomButton
                 variant="primary"
                 className="mt-8 text-primary-foreground hover:text-neutral-medium"
@@ -49,15 +51,7 @@ const Footer = () => {
             </div>
 
             <div>
-              <nav className="flex flex-col md:items-end gap-8 mt-16 md:mt-0">
-                {navItems.slice(0, -1)?.map(({ href, label }) => (
-                  <Link key={label} href={href}>
-                    <CustomButton variant="text" className="text-lg">
-                      {label}
-                    </CustomButton>
-                  </Link>
-                ))}
-              </nav>
+            
             </div>
           </div>
         </div>

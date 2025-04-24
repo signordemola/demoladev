@@ -70,6 +70,7 @@ const ProjectCard = ({
                   width={1000}
                   height={1000}
                   className="object-cover"
+                  rel="preload"
                 />
               </motion.div>
             </div>

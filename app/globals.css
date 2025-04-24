@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-inter: "Inter", "sans-serif";
@@ -157,6 +157,7 @@
 }
 
 .quote {
+  position: relative;
   height: 16px;
   margin: 20px;
   background-repeat: no-repeat;
@@ -171,3 +172,5 @@
   width: 1000px;
   height: 500px;
 }
+
+
