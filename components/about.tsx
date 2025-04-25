@@ -1,4 +1,5 @@
 import Headline from "./headline";
+import Link from "next/link";
 
 const About = () => {
   return (
@@ -22,15 +23,36 @@ const About = () => {
             <Headline emoji="🔥" text="Learn more!" />
           </div>
           <div className="border-b border-neutral-darker/60 dark:border-neutral-lighter/60 " />
-          <div className="px-[20px] py-8">
+          <div className="px-[30px] py-12">
             <h2
               id="about-heading"
-              className="text-xl md:text-3xl lg:text-5xl tracking-wide font-inter font-light"
+              className="text-xl md:text-3xl lg:text-6xl font-poppins font-light"
             >
-              Demoladev Web Solutions specializes in creating custom
-              professional websites for businesses, entrepreneurs & individuals.
-              The aim is to help brands grow, streamline operations & stand out
-              online
+              I’m <span className="text-primary">Adedemola</span>, a Lagos-based
+              web developer crafting fast, responsive sites with Next.js, React,
+              Tailwind & Framer-Motion. I design and code for both brands &
+              businesses to thrive online. Connect on{" "}
+              <span>
+                <Link
+                  href="https://www.linkedin.com/in/your-profile"
+                  className="text-blue-500 hover:underline inline-flex items-center gap-1"
+                  aria-label="Demola’s LinkedIn profile"
+                  target="_blank"
+                >
+                  linkedIn
+                </Link>
+              </span>{" "}
+              or
+              <span>
+                <Link
+                  href="https://github.com/signordemola"
+                  className="text-blue-500 hover:underline inline-flex items-center gap-1"
+                  aria-label="Demola’s GitHub profile"
+                  target="_blank"
+                >
+                  gitHub
+                </Link>
+              </span>
             </h2>
           </div>
         </div>
