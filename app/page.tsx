@@ -55,7 +55,7 @@ export default function Home() {
         aria-label="Main content"
       >
         <div
-          className="pt-22 px-1 border-l border-r border-neutral-dark/10"
+          className="pt-22 px-1 border-l border-r border-b rounded-md dark:border-neutral-medium/40 border-neutral-dark/40 pb-16"
           role="region"
           aria-label="Page sections"
         >

@@ -13,11 +13,11 @@ export const Logo = () => (
     >
       <defs>
         <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style={{ stopColor: "#151819" }} />
+          <stop offset="0%" style={{ stopColor: "#1B56FD" }} />
           <stop offset="25%" style={{ stopColor: "#8b5cf6" }} />
           <stop offset="50%" style={{ stopColor: "#66d9ed" }} />
           <stop offset="75%" style={{ stopColor: "#f59e0b" }} />
-          <stop offset="100%" style={{ stopColor: "#151819" }} />
+          <stop offset="100%" style={{ stopColor: "#1B56FD" }} />
 
           <animate
             attributeName="x1"

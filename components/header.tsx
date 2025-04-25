@@ -5,7 +5,7 @@ import { Logo } from "./logo";
 import { navItems } from "@/constants";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import SocialIcon from "./social-icon";
+import ThemeSwitcher from "./theme-switcher";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -78,30 +78,6 @@ const Header = () => {
                 </Link>
               </div>
             ))}
-
-            <div
-              className="absolute bottom-12 w-full"
-              role="region"
-              aria-label="Social links"
-            >
-              <div className="flex items-center justify-around">
-                <SocialIcon
-                  type="github"
-                  href="https://github.com/yourusername"
-                  aria-label="GitHub profile (opens in new tab)"
-                />
-                <SocialIcon
-                  type="linkedin"
-                  href="https://linkedin.com/in/yourprofile"
-                  aria-label="LinkedIn profile (opens in new tab)"
-                />
-                <SocialIcon
-                  type="instagram"
-                  href="https://instagram.com/in/yourprofile"
-                  aria-label="Instagram profile (opens in new tab)"
-                />
-              </div>
-            </div>
           </nav>
         </div>
         <div
@@ -137,7 +113,9 @@ const Header = () => {
                       <Link
                         href={href}
                         aria-label={`${label} section`}
-                        className="text-sm font-medium leading-[22px] text-neutral-dark hover:text-primary transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-primary-foreground after:transition-all after:duration-300 hover:after:w-full px-2 py-1 rounded-lg before:content-[attr(data-number)] before:inline-block before:font-bold before:w-auto before:right-0 before:-top-3 before:leading-[0.6em] before:text-[0.6em] before:absolute before:h-auto before:opacity-75"
+                        className={`text-sm font-medium leading-[20px] hover:text-primary transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-primary-foreground after:transition-all after:duration-300 hover:after:w-full px-2 py-1 rounded-lg before:content-[attr(data-number)] before:inline-block before:font-bold before:w-auto before:right-0 before:-top-3 before:leading-[0.6em] before:text-[0.6em] before:absolute before:h-auto before:opacity-75
+                          ${isScrolled ? "dark:text-neutral-darker" : ""}
+                          `}
                       >
                         <span className="relative">
                           <span className="absolute -right-0 -top-3 text-[0.6em] font-bold opacity-75">
@@ -162,6 +140,8 @@ const Header = () => {
               <Button variant={`contact`}>Contact Me</Button>
             </Link>
 
+            <ThemeSwitcher />
+
             <Button
               className="p-4 hover:cursor-pointer lg:hidden"
               variant={`menu`}
@@ -172,17 +152,17 @@ const Header = () => {
             >
               <div className="relative h-4 w-4">
                 <span
-                  className={`absolute left-0 top-0 h-[1.5px] w-4 bg-neutral-medium transition-all duration-500 ease-in-out ${
+                  className={`absolute left-0 top-0 h-[1.5px] w-4 bg-neutral-light transition-all duration-500 ease-in-out ${
                     isOpen ? "rotate-45 translate-y-[7px]" : "rotate-0"
                   }`}
                 ></span>
                 <span
-                  className={`absolute left-0 top-[7px] h-[1.5px] w-4 bg-neutral-medium transition-all duration-500 ease-in-out ${
+                  className={`absolute left-0 top-[7px] h-[1.5px] w-4 bg-neutral-light transition-all duration-500 ease-in-out ${
                     isOpen ? "opacity-0" : "opacity-100"
                   }`}
                 ></span>
                 <span
-                  className={`absolute left-0 top-[14px] h-[1.5px] w-4 bg-neutral-medium transition-all duration-500 ease-in-out ${
+                  className={`absolute left-0 top-[14px] h-[1.5px] w-4 bg-neutral-light transition-all duration-500 ease-in-out ${
                     isOpen ? "-rotate-45 -translate-y-[7px]" : "rotate-0"
                   }`}
                 ></span>

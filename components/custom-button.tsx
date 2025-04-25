@@ -17,16 +17,16 @@ const CustomButton = ({
   ...rest
 }: CustomButtonProps) => {
   const baseStyles =
-    "relative group/button h-11 px-6 rounded-xl uppercase inline-flex items-center gap-2 transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2";
+    "relative group/button h-11 px-6 rounded-xl inline-flex items-center gap-2 transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2";
 
   const variantStyles = {
     primary:
-      "bg-neutral-medium hover:bg-neutral-dark/20 text-neutral-dark border-2 border-neutral-ddarker",
+      "bg-neutral-light hover:bg-neutral-lighter text-primary border border-primary",
     secondary:
       "hover:bg-primary hover:text-white bg-transparent border border-primary",
     text: "h-auto text-primary px-0 border-transparent after:content-[''] after:transition-all after:duration-300 after:h-px after:w-0 after:absolute after:top-full after:bg-primary hover:after:w-full",
     projects:
-      "border border-neutral-darker bg-neutral-dark py-4 text-white font-medium hover:bg-opacity-90 shadow-lg backdrop-blur-sm",
+      "border border-primary dark:border-neutral-lighter bg-neutral-darker/90 tracking-wider py-4 text-white font-medium hover:bg-opacity-90 shadow-lg backdrop-blur-sm",
   };
 
   return (

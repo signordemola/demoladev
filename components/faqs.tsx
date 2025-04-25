@@ -12,9 +12,9 @@ const Faqs = () => {
   return (
     <section
       id="faqs"
-      className="cross-corners bg-neutral-light rounded-md mt-20 mx-4 lg:mx-2 scroll-mt-38"
+      className="dark:bg-neutral-darker/30 dark:text-neutral-lighter/85 dark:shadow-sm mt-20 mx-4 lg:mx-2 scroll-mt-38"
     >
-      <div className="mx-auto max-w-[1200px] overflow-hidden px-4 md:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1200px] overflow-hidden px-4 md:px-6 lg:px-8 rounded-md border border-neutral-darker/60 dark:border-neutral-lighter/60">
         <div className="flex flex-col justify-center items-center mt-6 mb-2">
           <Headline emoji="🙋🏻‍♂️" text="Got questions?" />
         </div>
@@ -23,7 +23,7 @@ const Faqs = () => {
         <div className="mt-8 md:mt-12 lg:mt-16" role="list">
           {faqs?.map(({ question, answer }, index) => (
             <div
-              className="border-t last:border-b border-neutral-dark border-dotted py-6 md:py-8 lg:py-10"
+              className="border-t last:border-b dark:border-neutral-dark border-dotted py-6 md:py-8 lg:py-10"
               key={question}
               role="listitem"
             >
@@ -45,7 +45,7 @@ const Faqs = () => {
                 </p>
                 <div
                   className={twMerge(
-                    "inline-flex items-center justify-center size-11 border border-stone-400 rounded-full shrink-0 transition duration-500",
+                    "inline-flex items-center justify-center size-11 cursor-pointer border dark:border-neutral-light rounded-full shrink-0 transition duration-500",
                     index === selectedIndex && "rotate-45"
                   )}
                 >
