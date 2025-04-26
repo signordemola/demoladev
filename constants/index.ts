@@ -85,6 +85,7 @@ export const navItems = [
 export const projects = [
   {
     title: "OnFoot Shoe Store",
+    type: "E-commerce Platform",
     description:
       "See what’s happening with OnFoot Store. Check out the latest innovations, top performance styles & featured stories.",
     imageSrc:
@@ -94,6 +95,7 @@ export const projects = [
   },
   {
     title: "Colonial Furniture",
+    type: "Product Catalog",
     description:
       "Cherry Dining Room Solid Wood Furniture makers Colonial Furniture Pennsylvania House Furniture Cherry Bedroom",
     imageSrc:
@@ -103,6 +105,7 @@ export const projects = [
   },
   {
     title: "De Brauw Blackstone",
+    type: "Corporate Website",
     description:
       "De Brauw is a leading international law firm. Rooted deeply in the Dutch tradition of problem-solving & innovation.",
     imageSrc:
@@ -112,6 +115,7 @@ export const projects = [
   },
   {
     title: "CarePulse Health",
+    type: "Healthcare Portal",
     description:
       "A premier network of skilled nursing, rehabilitation and senior care services with locations all over the country.",
     imageSrc:
@@ -121,6 +125,7 @@ export const projects = [
   },
   {
     title: "Zenbrew Coffee",
+    type: "Local Business Site",
     description:
       "Experience the joy of exceptional coffee in our cozy space, where every cup is crafted with passion and warmth",
     imageSrc:
@@ -130,6 +135,7 @@ export const projects = [
   },
   {
     title: "Hk Insulation Inc.",
+    type: "Industrial Services",
     description:
       "Specializes in delivering state-of-the-art insulation services to apartments, hotels & commercial establishments.",
     imageSrc:

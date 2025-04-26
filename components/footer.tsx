@@ -13,7 +13,8 @@ import {
 } from "./ui/form";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { Mail } from "lucide-react";
+import { Mail, MapPin, PhoneCallIcon } from "lucide-react";
+import { Logo } from "./logo";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -35,121 +36,155 @@ const Footer = () => {
 
   return (
     <footer
-      className="bg-neutral-darker/20 text-neutral-darker dark:bg-neutral-darker/60 bg-gradient dark:text-neutral-lighter/80 mt-4 scroll-mt-22"
+      className="dark:bg-neutral-darker/70 bg-neutral-light/70 border-t border-neutral-darker/60 dark:border-neutral-lighter/60 mt-20 scroll-mt-22"
       id="contact"
       role="contentinfo"
       aria-labelledby="footer-heading"
     >
       <div className="max-w-[1200px] mx-auto px-6 py-12">
-        <div className="md:mx-10">
-          <h6 className="text-2xl md:text-3xl lg:text-5xl mb-6 md:mb:8 lg:mb-12">
-            Ready to work together? Reach out!
-          </h6>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-4 px-1 sm:pr-16 md:pr-20 lg:pr-0"
-              aria-labelledby="form-heading"
-            >
-              <h3 id="form-heading" className="sr-only">
-                Contact Form
+        <div className="grid md:grid-cols-2 gap-12 mb-16">
+          {/* Contact Info */}
+          <div className="space-y-8 md:pl-12">
+            <div>
+              <Logo />
+            </div>
+            <div className="space-y-4 ml-3">
+              <h3 className="text-xl font-semibold mb-4">
+                Direct Contact{" "}
+                <span className="ml-2 text-sm text-neutral-dark/60 dark:text-neutral-lighter/60 group-hover:text-primary">
+                  (Response within 24hrs)
+                </span>
               </h3>
 
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="dark:text-neutral-lighter/80">
-                      Full Name
-                    </FormLabel>
-                    <FormControl>
-                      <input
-                        {...field}
-                        className="w-full bg-neutral-lighter/95 text-neutral-darker p-3 border border-neutral-dark/80 dark:border-0 focus:border-0 rounded"
-                        placeholder="Your name"
-                        aria-required="true"
-                      />
-                    </FormControl>
-                    <FormMessage className="text-red-500" />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="dark:text-neutral-lighter/80">
-                      Email
-                    </FormLabel>
-                    <FormControl>
-                      <input
-                        {...field}
-                        type="email"
-                        className="w-full bg-neutral-lighter/95 text-neutral-darker p-3 border border-neutral-dark/80 dark:border-0 focus:border-0 rounded"
-                        placeholder="your.email@example.com"
-                        aria-required="true"
-                      />
-                    </FormControl>
-                    <FormMessage className="text-red-400" />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="dark:text-neutral-lighter/80">
-                      Message
-                    </FormLabel>
-                    <FormControl>
-                      <textarea
-                        {...field}
-                        className="w-full bg-neutral-lighter/95 text-neutral-darker p-3 border border-neutral-dark/80 dark:border-0 focus:border-0 rounded h-32"
-                        placeholder="Your message"
-                        aria-required="true"
-                      />
-                    </FormControl>
-                    <FormMessage className="text-red-500" />
-                  </FormItem>
-                )}
-              />
-
-              <Button
-                type="submit"
-                size={`lg`}
-                className="mt-4 text-neutral-light"
-                aria-label="Submit contact form"
+              <Link
+                href="mailto:adedamola4678@gmail.com"
+                className="flex items-center gap-3 group hover:text-primary transition-colors"
               >
-                Send Message
-              </Button>
-            </form>
-          </Form>
-          <div className="mt-6 ml-1.5">
-            <p className="mb-4">Or email me @ </p>
-            <Link
-              href="mailto:adedamola4678@gmail.com"
-              className="flex gap-1 h-auto text-primary px-0 border-transparent after:content-[''] after:transition-all after:duration-300 after:h-px after:w-0 after:absolute after:top-full after:bg-primary hover:after:w-full"
-            >
-              <span>
-                <Mail />
-              </span>
-              <span>adedamola4678@gmail.com</span>
-            </Link>
+                <Mail className="w-5 h-5" />
+                <span>adedamola4678@gmail.com</span>
+              </Link>
+
+              <Link
+                href="tel:+2349158861316"
+                className="flex items-center gap-3 group hover:text-primary transition-colors"
+              >
+                <PhoneCallIcon className="w-5 h-5" />
+                <span>+234 915 886 1316</span>
+              </Link>
+
+              <div className="flex items-center gap-3">
+                <MapPin className="w-5 h-5" />
+                <span>Lagos, Nigeria • Remote Worldwide</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="space-y-6">
+            <h2 className="text-3xl md:text-4xl font-light mb-6">
+              {`Let's Build Something`}
+              <span className="text-primary"> Amazing</span>
+            </h2>
+
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
+                aria-labelledby="form-heading"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="dark:text-neutral-lighter/80 text-sm">
+                          Full Name
+                        </FormLabel>
+                        <FormControl>
+                          <input
+                            {...field}
+                            className="w-full bg-transparent p-3 border border-neutral-dark/30 dark:border-neutral-lighter/30 rounded-lg focus:ring-2 focus:ring-primary/50"
+                            placeholder="John Doe"
+                            aria-required="true"
+                          />
+                        </FormControl>
+                        <FormMessage className="text-red-500 text-sm" />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="dark:text-neutral-lighter/80 text-sm">
+                          Email
+                        </FormLabel>
+                        <FormControl>
+                          <input
+                            {...field}
+                            type="email"
+                            className="w-full bg-transparent p-3 border border-neutral-dark/30 dark:border-neutral-lighter/30 rounded-lg focus:ring-2 focus:ring-primary/50"
+                            placeholder="john@company.com"
+                            aria-required="true"
+                          />
+                        </FormControl>
+                        <FormMessage className="text-red-400 text-sm" />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="dark:text-neutral-lighter/80 text-sm">
+                        Project Details
+                      </FormLabel>
+                      <FormControl>
+                        <textarea
+                          {...field}
+                          className="w-full bg-transparent p-3 border border-neutral-dark/30 dark:border-neutral-lighter/30 rounded-lg focus:ring-2 focus:ring-primary/50 h-40"
+                          placeholder="Tell me about your project..."
+                          aria-required="true"
+                        />
+                      </FormControl>
+                      <FormMessage className="text-red-500 text-sm" />
+                    </FormItem>
+                  )}
+                />
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full bg-primary/90 hover:bg-primary text-neutral-lighter transition-all"
+                  aria-label="Submit contact form"
+                >
+                  Send Message →
+                </Button>
+              </form>
+            </Form>
           </div>
         </div>
 
-        <div className="flex justify-between items-center mt-10 pt-6 border-t border-accent">
-          <p className="text-xs dark:text-neutral-medium">
-            Copyright &copy; DemolaDev {year} &bull;
-            <span className="sr-only">, All rights reserved</span>
-          </p>
+        {/* Copyright Section */}
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-neutral-dark/20 dark:border-neutral-lighter/20">
+          <div className="text-sm mb-4 md:mb-0">
+            <span className="text-primary font-medium">DemolaDev</span>
+            <span className="mx-2">•</span>
+            <span>Web Solutions!</span>
+          </div>
 
-          <ScrollToTop aria-label="Scroll to top of page" />
+          <div className="flex items-center gap-6">
+            <p className="text-sm dark:text-neutral-medium">
+              © {year} All Rights Reserved
+            </p>
+            <ScrollToTop aria-label="Scroll to top" />
+          </div>
         </div>
       </div>
     </footer>

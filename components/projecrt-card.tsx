@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { useTransform, motion, useScroll, MotionValue } from "framer-motion";
@@ -10,6 +9,7 @@ import { useRef } from "react";
 interface ProjectCardProps {
   i: number;
   title: string;
+  type: string;
   description: string;
   imageSrc: string;
   projectLink: string;
@@ -22,6 +22,7 @@ interface ProjectCardProps {
 const ProjectCard = ({
   i,
   title,
+  type,
   description,
   imageSrc,
   projectLink,
@@ -36,8 +37,16 @@ const ProjectCard = ({
     offset: ["start end", "start start"],
   });
 
-  const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
+
+  // Calculate text color based on background brightness
+  const rgb = parseInt(color.slice(1), 16);
+  const r = (rgb >> 16) & 0xff;
+  const g = (rgb >> 8) & 0xff;
+  const b = (rgb >> 0) & 0xff;
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  const textColor = brightness > 128 ? "#000000" : "#ffffff";
 
   return (
     <div
@@ -48,75 +57,74 @@ const ProjectCard = ({
         style={{
           backgroundColor: color,
           scale,
-          top: `calc(-5vh + ${i * 25}px)`,
-          transformOrigin: "top",
+          top: `calc(-0.5vh + ${i * 25}px)`,
+          color: textColor,
         }}
-        className="w-[100%] md:w-[1000px] h-[420px] md:h-[470px] lg:h-[500px] relative rounded-md -top-1/4 origin-top"
+        className="w-[95%] md:w-[90%] lg:w-[1000px] h-[500px] relative rounded-xl shadow-2xl origin-top overflow-hidden border border-white/10"
       >
-        <h3 className="text-center font-semibold text-neutral-light text-xl md:text-2xl lg:text-4xl mt-6 md:mt-8">
-          {title}
-        </h3>
+        <div className="h-full flex flex-col p-6 md:p-8">
+          {/* Header Section */}
+          <div className="mb-4 md:mb-6">
+            <h3 className="text-2xl md:text-3xl font-semibold mb-2 tracking-wider">
+              {title}
+            </h3>
+            <span className="text-sm font-medium opacity-80">{type}</span>
+          </div>
 
-        <Link
-          href={projectLink}
-          target="_blank"
-          className="w-fit"
-          aria-label={`View ${title} project details`}
-        >
-          <div className="flex flex-col md:flex-row gap-4 md:gap-2 lg:gap-6 mt-4 md:mt-[50px] h-[calc(100%-80px)] px-4 md:px-6">
-            <div className="relative w-full md:w-[60%] h-[220px] md:h-full rounded-md overflow-hidden order-1 md:order-2">
-              <motion.div
-                className="w-full h-full"
-                style={{ scale: imageScale }}
-              >
-                <Image
-                  src={imageSrc}
-                  alt={`Screenshot of ${title} project`}
-                  width={1000}
-                  height={1000}
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 
-                        (max-width: 1200px) 60vw,
-                        1000px"
-                  quality={85}
-                  placeholder="blur"
-                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+yHgAFWAJp08sG7wAAAABJRU5ErkJggg=="
-                  priority={i < 3}
-                />
-              </motion.div>
-            </div>
+          <Link
+            href={projectLink}
+            target="_blank"
+            className="group flex-1 flex flex-col md:flex-row gap-6"
+          >
+            {/* Image Container */}
+            <motion.div
+              className="relative w-full md:w-[55%] h-[240px] md:h-full rounded-lg overflow-hidden"
+              style={{ scale: imageScale }}
+            >
+              <Image
+                src={imageSrc}
+                alt={`${title} project showcase`}
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={90}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,..."
+                priority={i < 4}
+              />
+            </motion.div>
 
-            <div className="w-full md:w-[40%] flex flex-col gap-2 md:gap-6 order-2 md:order-1">
-              <p className="text-xs md:text-xl lg:text-3xl text-neutral-light">
+            {/* Content Section */}
+            <div className="w-full md:w-[45%] flex flex-col justify-between md:py-4">
+              <p className="text-sm md:text-lg lg:text-xl leading-relaxed mb-4">
                 {description}
               </p>
 
               <Button
-                variant="contact"
-                size="lg"
-                className="w-full md:w-fit"
-                role="button"
-                aria-label={`Open ${title} live demo`}
+                variant="ghost"
+                className="w-full md:w-fit backdrop-blur-sm border border-white/50 hover:border-white/30"
+                style={{ color: textColor }}
               >
-                Live demo
+                View Project
                 <svg
-                  width="22"
-                  height="12"
-                  viewBox="0 0 22 12"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="ml-1 mb-0.5"
-                  aria-hidden="true"
+                  stroke="currentColor"
+                  className="ml-2"
                 >
                   <path
-                    d="M21.5303 6.53033C21.8232 6.23744 21.8232 5.76256 21.5303 5.46967L16.7574 0.696699C16.4645 0.403806 15.9896 0.403806 15.6967 0.696699C15.4038 0.989592 15.4038 1.46447 15.6967 1.75736L19.9393 6L15.6967 10.2426C15.4038 10.5355 15.4038 11.0104 15.6967 11.3033C15.9896 11.5962 16.4645 11.5962 16.7574 11.3033L21.5303 6.53033ZM0 6.75L21 6.75V5.25L0 5.25L0 6.75Z"
-                    fill="white"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
               </Button>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </motion.div>
     </div>
   );
