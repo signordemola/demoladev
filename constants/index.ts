@@ -69,8 +69,8 @@ export const navItems = [
     label: "projects",
   },
   {
-    href: "#testimonials",
-    label: "testimonials",
+    href: "#features",
+    label: "features",
   },
   {
     href: "#faqs",
