@@ -54,7 +54,7 @@ const ThemeSwitcher = () => {
         ) : (
           <Monitor className="w-4 h-4" />
         )}
-        <span className="capitalize">{theme}</span>
+        <span className="capitalize hidden">{theme}</span>
       </button>
 
       {open && (

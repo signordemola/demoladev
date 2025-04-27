@@ -8,8 +8,8 @@ export const Logo = () => (
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 480 120"
-      className="w-64 h-auto transition-all duration-300"
+      viewBox="0 0 400 120"
+      className="w-60 h-auto transition-all duration-300"
     >
       <defs>
         <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -59,25 +59,25 @@ export const Logo = () => (
           x="0"
           y="0"
           fill="url(#mainGradient)"
-          fontSize="60"
-          fontFamily="'Segoe UI', system-ui, sans-serif"
-          fontWeight="700"
-          letterSpacing="-2px"
+          fontSize="50"
+          fontFamily="'Poppins', system-ui, sans-serif"
+          fontWeight="600"
+          letterSpacing="-1px"
         >
           demoladev
         </text>
       </g>
 
-      <g className="particles" opacity="0.8">
+      <g className="particles" opacity="0.8" transform="translate(140, 0)">
         <circle
-          cx="400"
+          cx="50"
           cy="30"
           r="2"
           fill="#8b5cf6"
           className="animate-pulse"
         />
         <circle
-          cx="420"
+          cx="120"
           cy="50"
           r="1.5"
           fill="#6366f1"
@@ -85,12 +85,20 @@ export const Logo = () => (
           style={{ animationDelay: "0.2s" }}
         />
         <circle
-          cx="380"
+          cx="200"
           cy="70"
           r="1.8"
           fill="#8b5cf6"
           className="animate-pulse"
           style={{ animationDelay: "0.4s" }}
+        />
+        <circle
+          cx="280"
+          cy="40"
+          r="1.3"
+          fill="#66d9ed"
+          className="animate-pulse"
+          style={{ animationDelay: "0.6s" }}
         />
       </g>
     </svg>

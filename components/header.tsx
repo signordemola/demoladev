@@ -89,7 +89,7 @@ const Header = () => {
           role="navigation"
           aria-label="Main header"
         >
-          <div className="flex cursor-pointer rtl:relative rtl:top-3">
+          <div className="cursor-pointer rtl:relative rtl:top-3">
             <Logo />
           </div>
 

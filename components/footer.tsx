@@ -81,7 +81,7 @@ const Footer = () => {
 
           {/* Contact Form */}
           <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-light mb-6">
+            <h2 className="text-3xl md:text-4xl font-light py-3 mb-6">
               {`Let's Build Something`}
               <span className="text-primary"> Amazing</span>
             </h2>
@@ -172,7 +172,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-neutral-dark/20 dark:border-neutral-lighter/20">
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-neutral-dark/30 dark:border-neutral-lighter/20">
           <div className="text-sm mb-4 md:mb-0">
             <span className="text-primary font-medium">DemolaDev</span>
             <span className="mx-2">•</span>
