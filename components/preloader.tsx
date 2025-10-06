@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { cubicBezier, motion, Variants } from "framer-motion";
+
+const easeCurve = cubicBezier(0.76, 0, 0.24, 1);
 
 export const opacity = {
   initial: { opacity: 0 },
@@ -15,7 +17,11 @@ export const slideUp = {
   initial: { top: 0 },
   exit: {
     top: "-100vh",
-    transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
+    transition: {
+      duration: 0.8,
+      ease: easeCurve,
+      delay: 0.2,
+    },
   },
 };
 
@@ -64,14 +70,14 @@ const Preloader = () => {
     dimension.height
   } Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height}  L0 0`;
 
-  const curve = {
+  const curve: Variants = {
     initial: {
       d: initialPath,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
+      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] as const },
     },
     exit: {
       d: targetPath,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
+      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] as const, delay: 0.3 },
     },
   };
 
