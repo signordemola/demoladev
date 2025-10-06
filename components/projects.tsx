@@ -2,9 +2,9 @@
 
 import { projects } from "@/constants";
 import React, { useRef } from "react";
-import ProjectCard from "./projecrt-card";
 import { useScroll } from "framer-motion";
 import Headline from "./headline";
+import ProjectCard from "./project-card";
 
 const Projects = () => {
   const container = useRef(null);

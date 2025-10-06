@@ -40,13 +40,31 @@ const ProjectCard = ({
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
 
-  // Calculate text color based on background brightness
-  const rgb = parseInt(color.slice(1), 16);
-  const r = (rgb >> 16) & 0xff;
-  const g = (rgb >> 8) & 0xff;
-  const b = (rgb >> 0) & 0xff;
-  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-  const textColor = brightness > 128 ? "#000000" : "#ffffff";
+  let textColor = "#000000";
+  try {
+    if (typeof color === "string" && color.startsWith("#")) {
+      let r = 0;
+      let g = 0;
+      let b = 0;
+      const hex = color.slice(1);
+      if (hex.length === 3) {
+        r = parseInt(hex[0] + hex[0], 16);
+        g = parseInt(hex[1] + hex[1], 16);
+        b = parseInt(hex[2] + hex[2], 16);
+      } else if (hex.length === 6) {
+        r = parseInt(hex.slice(0, 2), 16);
+        g = parseInt(hex.slice(2, 4), 16);
+        b = parseInt(hex.slice(4, 6), 16);
+      } else {
+        throw new Error("Invalid hex color length");
+      }
+
+      const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+      textColor = brightness > 128 ? "#000000" : "#ffffff";
+    }
+  } catch (err) {
+    console.warn("Invalid color for project card:", color, err);
+  }
 
   return (
     <div
@@ -88,8 +106,6 @@ const ProjectCard = ({
                 className="object-cover object-top"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 quality={90}
-                placeholder="blur"
-                blurDataURL="data:image/png;base64,..."
                 priority={i < 4}
               />
             </motion.div>

@@ -26,7 +26,24 @@ const Preloader = () => {
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    setDimension({ width: window.innerWidth, height: window.innerHeight });
+    const setDims = () =>
+      setDimension({ width: window.innerWidth, height: window.innerHeight });
+
+    setDims();
+
+    let resizeTimer: number | undefined;
+    const onResize = () => {
+      window.clearTimeout(resizeTimer);
+      // debounce resize updates
+      resizeTimer = window.setTimeout(() => setDims(), 150);
+    };
+
+    window.addEventListener("resize", onResize, { passive: true });
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      if (resizeTimer) window.clearTimeout(resizeTimer);
+    };
   }, []);
 
   useEffect(() => {

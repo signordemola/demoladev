@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Logo } from "./logo";
 import { navItems } from "@/constants";
-import Link from "next/link";
 import { Button } from "./ui/button";
 import ThemeSwitcher from "./theme-switcher";
 
@@ -11,30 +10,73 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Debounced scroll handler to prevent excessive re-renders
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 1);
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsScrolled(window.scrollY > 1);
+      }, 10);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  const handleMobileNavClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    setIsOpen(false);
-    const target = document.querySelector(event.currentTarget.hash);
-    target?.scrollIntoView({ behavior: "smooth" });
-  };
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  const handleMobileNavClick = useCallback(
+    (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      const href = event.currentTarget.hash;
+
+      // Close menu immediately
+      setIsOpen(false);
+
+      // Small delay to allow menu close animation, then scroll
+      setTimeout(() => {
+        const target = document.querySelector(href);
+        target?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    },
+    []
+  );
+
+  const handleDesktopNavClick = useCallback(
+    (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      const href = event.currentTarget.hash;
+      const target = document.querySelector(href);
+      target?.scrollIntoView({ behavior: "smooth" });
+    },
+    []
+  );
 
   return (
     <header aria-label="Header Section">
       <div className="border-b-0 before:hidden after:hidden">
         {/* Mobile Nav */}
         <div
-          className={`fixed top-0 left-0 h-full w-full lg:hidden bg-neutral-light z-50 transition-max-height duration-500 ease-in-out ${
-            isOpen ? "max-h-screen" : "max-h-0"
-          } overflow-hidden`}
+          className={`fixed top-0 left-0 h-full w-full lg:hidden bg-neutral-light transition-all duration-300 ease-in-out ${
+            isOpen
+              ? "z-[60] opacity-100 pointer-events-auto"
+              : "z-[-1] opacity-0 pointer-events-none"
+          }`}
           aria-hidden={!isOpen}
           role="dialog"
           aria-modal="true"
@@ -49,10 +91,11 @@ const Header = () => {
                 key={label}
                 className="text-neutral-darker border-t last:border-b border-neutral-dark py-8 group/nav-item relative isolate"
               >
-                <Link
+                <a
                   href={href}
                   onClick={handleMobileNavClick}
                   aria-label={`Navigate to ${label} section`}
+                  className="block touch-manipulation"
                 >
                   <div className="container !max-w-full flex items-center justify-between px-6">
                     <span className="text-3xl group-hover/nav-item:pl-2 transition-all duration-300">
@@ -75,11 +118,13 @@ const Header = () => {
                   </div>
                   <div className="absolute w-full h-0 bg-neutral-medium transition-all duration-300 group-hover/nav-item:h-full bottom-0 -z-10" />
                   <span className="sr-only">Open {label} section</span>
-                </Link>
+                </a>
               </div>
             ))}
           </nav>
         </div>
+
+        {/* Header */}
         <div
           className={`w-full max-w-[1440px] px-4 md:px-[34px] fixed left-1/2 top-0 z-50 mx-auto mb-8 flex -translate-x-1/2 items-center justify-between py-2 lg:mt-2 lg:max-w-[min(1150px,calc(100vw-24px))] lg:rounded-2xl lg:py-0 before:shadow-fade before:absolute before:inset-0 before:z-[-1] before:bg-white before:transition-opacity before:duration-300 lg:before:rounded-2xl bg-primary-50/95 border-0 before:block ${
             isScrolled
@@ -93,7 +138,7 @@ const Header = () => {
             <Logo />
           </div>
 
-          {/* desktop nav */}
+          {/* Desktop nav */}
           <nav
             aria-label="Primary navigation"
             data-orientation="horizontal"
@@ -110,10 +155,11 @@ const Header = () => {
                 >
                   {navItems.slice(0, -1)?.map(({ href, label }, index) => (
                     <li key={label} className="relative group">
-                      <Link
+                      <a
                         href={href}
+                        onClick={handleDesktopNavClick}
                         aria-label={`${label} section`}
-                        className={`text-sm font-medium leading-[20px] hover:text-primary transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-primary-foreground after:transition-all after:duration-300 hover:after:w-full px-2 py-1 rounded-lg before:content-[attr(data-number)] before:inline-block before:font-bold before:w-auto before:right-0 before:-top-3 before:leading-[0.6em] before:text-[0.6em] before:absolute before:h-auto before:opacity-75
+                        className={`text-sm font-medium leading-[20px] hover:text-primary transition-colors duration-200 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-200 hover:after:w-full px-2 py-1 rounded-lg block touch-manipulation
                           ${isScrolled ? "dark:text-neutral-darker" : ""}
                           `}
                       >
@@ -123,7 +169,7 @@ const Header = () => {
                           </span>
                           {"//"} {label}
                         </span>
-                      </Link>
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -131,38 +177,39 @@ const Header = () => {
             </div>
           </nav>
 
-          <div className="flex items-center justify-center">
-            <Link
+          <div className="flex items-center justify-center gap-2">
+            <a
               href="#contact"
+              onClick={handleDesktopNavClick}
               className="hidden lg:block"
               aria-label="Contact me (opens contact section)"
             >
               <Button variant={`contact`}>Contact Me</Button>
-            </Link>
+            </a>
 
             <ThemeSwitcher />
 
             <Button
-              className="p-4 hover:cursor-pointer lg:hidden"
+              className="p-4 hover:cursor-pointer lg:hidden touch-manipulation"
               variant={`menu`}
               size={`xl`}
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? "Close menu" : "Open menu"}
-              role="button"
+              aria-expanded={isOpen}
             >
               <div className="relative h-4 w-4">
                 <span
-                  className={`absolute left-0 top-0 h-[1.5px] w-4 bg-neutral-light transition-all duration-500 ease-in-out ${
+                  className={`absolute left-0 top-0 h-[1.5px] w-4 bg-neutral-light transition-all duration-300 ease-in-out ${
                     isOpen ? "rotate-45 translate-y-[7px]" : "rotate-0"
                   }`}
                 ></span>
                 <span
-                  className={`absolute left-0 top-[7px] h-[1.5px] w-4 bg-neutral-light transition-all duration-500 ease-in-out ${
+                  className={`absolute left-0 top-[7px] h-[1.5px] w-4 bg-neutral-light transition-all duration-300 ease-in-out ${
                     isOpen ? "opacity-0" : "opacity-100"
                   }`}
                 ></span>
                 <span
-                  className={`absolute left-0 top-[14px] h-[1.5px] w-4 bg-neutral-light transition-all duration-500 ease-in-out ${
+                  className={`absolute left-0 top-[14px] h-[1.5px] w-4 bg-neutral-light transition-all duration-300 ease-in-out ${
                     isOpen ? "-rotate-45 -translate-y-[7px]" : "rotate-0"
                   }`}
                 ></span>

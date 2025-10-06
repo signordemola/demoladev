@@ -4,15 +4,16 @@ import "./globals.css";
 import ThemeProvider from "@/components/theme-provider";
 
 const inter = Inter({
-  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
-  display: "optional",
+  variable: "--font-inter",
+  display: "swap",
 });
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  display: "optional",
+  variable: "--font-poppins",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -24,54 +25,60 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
   },
   description:
-    "Custom websites for businesses, entrepreneurs, and individuals—designed to grow your brand, streamline operations, and boost revenue.",
+    "Custom websites for Nigerian businesses, entrepreneurs, and startups — designed to grow your brand, streamline operations, and boost revenue.",
   keywords: [
-    "business website developer",
-    "custom websites for companies",
-    "enterprise web solutions",
-    "website for small business",
-    "professional web design",
+    "web developer in Nigeria",
+    "website designer in Lagos",
+    "custom websites for Nigerian businesses",
+    "affordable web design Nigeria",
+    "business website developer Africa",
+    "SEO-friendly websites Nigeria",
+    "ecommerce developer Nigeria",
+    "professional web design Lagos",
+    "web solutions in Nigeria",
   ],
-  authors: [{ name: "Demoladev", url: "https://demoladev.vercel.app/" }],
+  authors: [{ name: "Demoladev", url: "https://demoladevop.com/" }],
   openGraph: {
     title: "Demoladev | Enterprise Web Solutions",
     description:
-      "Tailored websites for companies and business owners—drive growth with a site built for your success.",
-    url: "https://demoladev.vercel.app/",
+      "Professional web development and design services for Nigerian businesses and entrepreneurs. Build your brand online with Demoladev Web Solutions.",
+    url: "https://demoladevop.com/",
     siteName: "Demoladev Web Solutions",
     images: [
       {
-        url: "https://demoladev.vercel.app/og-image.jpg", // Add later
+        url: "https://demoladevop.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Demoladev Web Solutions Preview",
       },
     ],
-    locale: "en_US",
+    locale: "en_NG",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Demoladev | Enterprise Web Solutions",
+    title: "Demoladev | Web Solutions for Nigerian Businesses",
     description:
-      "Need a website that works for your business? I build custom solutions for companies and individuals.",
-    creator: "@yourXhandle", // Swap with your X handle
-    images: ["https://demoladev.vercel.app/og-image.jpg"],
+      "Need a website that works for your business? Demoladev builds custom web solutions for Nigerian companies and startups.",
+    creator: "@demoladevop",
+    images: ["https://demoladevop.com/og-image.jpg"],
   },
   alternates: {
-    canonical: "https://demoladev.vercel.app", // Your Vercel URL
+    canonical: "https://demoladevop.com",
   },
+  metadataBase: new URL("https://demoladevop.com"),
+  category: "Technology & Web Development",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="scroll-smooth dark" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${inter.className}  ${poppins.className} bg-gradient antialiased`}
+        className={`${inter.variable} ${poppins.variable} bg-gradient antialiased`}
       >
         <ThemeProvider
           attribute="class"

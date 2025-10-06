@@ -39,13 +39,6 @@ export default function Home() {
         {isLoading && <Preloader />}
       </AnimatePresence>
 
-      {/* Skip to content link for screen readers */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:bg-white focus:p-4 focus:rounded-lg focus:z-[1000]"
-      >
-        Skip to main content
-      </a>
 
       <Header />
       <main

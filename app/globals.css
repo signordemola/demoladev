@@ -149,16 +149,17 @@
   --sidebar-ring: oklch(0.65 0.15 240); /* Darker blue */
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   @apply text-[var(--color-foreground)];
 }
 
 .bg-gradient::after {
-  background-image: radial-gradient(
-      at 40% 40%,
-      rgb(30, 144, 255) 0px,
-      transparent 50%
-    ),
+  background-image:
+    radial-gradient(at 40% 40%, rgb(30, 144, 255) 0px, transparent 50%),
     radial-gradient(at 90% 10%, rgb(255, 105, 180) 0px, transparent 50%),
     radial-gradient(at 50% 95%, rgb(0, 255, 255) 0px, transparent 50%),
     radial-gradient(at 20% 30%, rgb(50, 205, 50) 0px, transparent 50%),
@@ -185,7 +186,8 @@ body {
   content: "";
   height: 100vh;
   width: 100vw;
-  background-image: linear-gradient(currentcolor 1px, transparent 1px),
+  background-image:
+    linear-gradient(currentcolor 1px, transparent 1px),
     linear-gradient(to right, currentcolor 1px, transparent 1px);
   background-size: 94px 90px;
   color: rgba(113, 113, 113, 0.07);
@@ -193,4 +195,8 @@ body {
   z-index: -1;
   background-color: transparent;
   transition: 0.5s linear;
+}
+
+.sr-only {
+  transition: opacity 0.1s ease-in;
 }

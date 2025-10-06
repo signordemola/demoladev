@@ -29,7 +29,6 @@ const Faqs = () => {
             >
               <button
                 className="w-full flex items-center justify-between gap-4"
-                role="button"
                 onClick={() =>
                   setSelectedIndex((prev) => (prev === index ? null : index))
                 }

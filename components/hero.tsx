@@ -2,7 +2,6 @@
 
 import React from "react";
 import CustomButton from "./custom-button";
-import Link from "next/link";
 import Headline from "./headline";
 
 const Hero = () => {
@@ -33,10 +32,9 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 lg:gap-8">
-          <Link href="#projects">
+          <a href="#projects">
             <CustomButton
               variant="projects"
-              role="button"
               icon={
                 <div className="overflow-hidden size-5">
                   <div className="h-5 w-10 flex group-hover/button:-translate-x-1/2 transition-transform duration-500">
@@ -74,13 +72,13 @@ const Hero = () => {
             >
               <span className="tracking-wider">View My Work</span>
             </CustomButton>
-          </Link>
+          </a>
 
-          <Link href="#contact" className="flex justify-center">
-            <CustomButton variant="primary" role="button">
+          <a href="#contact" className="flex justify-center">
+            <CustomButton variant="primary">
               Let&apos;s Make It Happen
             </CustomButton>
-          </Link>
+          </a>
         </div>
 
         <div className="relative z-[2] mx-auto translate-y-[10%]">
