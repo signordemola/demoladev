@@ -90,7 +90,7 @@ const Footer = () => {
               >
                 <PhoneCallIcon className="w-5 h-5" />
                 <span>(+234) 915 886 1316</span>
-                <span className="text-muted text-sm">(also on whatsapp)</span>
+                <span className="text-sm text-neutral-dark/60 dark:text-neutral-lighter/60 group-hover:text-primary">(also on whatsapp)</span>
               </Link>
 
               <div className="flex items-center gap-3">
