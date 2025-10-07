@@ -109,7 +109,7 @@ const ProjectCard = ({
                 className="object-cover object-top"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 quality={75}
-                priority={i < 2}
+                priority={i < 3}
               />
             </motion.div>
 
