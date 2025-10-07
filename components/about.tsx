@@ -45,16 +45,26 @@ const About = () => {
                 </span>
 
                 <span className="text-lg md:text-xl lg:text-2xl font-normal leading-relaxed">
-                  A Lagos-based web developer crafting fast, responsive sites
-                  with Next.js, React, Tailwind & Framer-Motion. I design and
-                  code for both brands & businesses to thrive online.
+                  a web developer from Lagos who builds high-performance
+                  websites, SaaS MVPs, and digital tools. From landing pages to
+                  scheduling apps, I use modern frameworks to create products
+                  that scale and convert.
                 </span>
 
                 <div className="mt-6 space-y-3 text-base md:text-lg">
                   <p>
                     Connect on{" "}
                     <Link
-                      href="https://www.linkedin.com/in/your-profile"
+                      href={`https://x.com/demoladev`}
+                      className="text-blue-500 hover:underline inline-flex items-center gap-1 transition-colors"
+                      aria-label="Demola’s LinkedIn profile"
+                      target="_blank"
+                    >
+                      X (Twitter)
+                    </Link>
+                    ,{" "}
+                    <Link
+                      href="https://www.linkedin.com/in/abiodun-bello-553799199/"
                       className="text-blue-500 hover:underline inline-flex items-center gap-1 transition-colors"
                       aria-label="Demola’s LinkedIn profile"
                       target="_blank"

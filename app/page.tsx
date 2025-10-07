@@ -9,7 +9,6 @@ import dynamic from "next/dynamic";
 // dynamic loading
 const About = dynamic(() => import("@/components/about"));
 const Faqs = dynamic(() => import("@/components/faqs"));
-const Features = dynamic(() => import("@/components/features"));
 const Footer = dynamic(() => import("@/components/footer"));
 const Header = dynamic(() => import("@/components/header"));
 const Hero = dynamic(() => import("@/components/hero"), {
@@ -24,6 +23,7 @@ const Hero = dynamic(() => import("@/components/hero"), {
   ),
 });
 const Projects = dynamic(() => import("@/components/projects"));
+const Services = dynamic(() => import("@/components/services"));
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -38,7 +38,6 @@ export default function Home() {
       <AnimatePresence mode="wait">
         {isLoading && <Preloader />}
       </AnimatePresence>
-
 
       <Header />
       <main
@@ -55,7 +54,8 @@ export default function Home() {
           <Hero />
           <About />
           <Projects />
-          <Features />
+          {/* <Features /> */}
+          <Services />
           <Faqs />
         </div>
       </main>

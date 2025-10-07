@@ -270,10 +270,10 @@ const Footer = () => {
           <div className="text-sm mb-4 md:mb-0">
             <span className="text-primary font-medium">DemolaDev</span>
             <span className="mx-2">•</span>
-            <span>Web Solutions!</span>
+            <span>Web Solutions</span>
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center space-between gap-10 mt-6 md:mt-0">
             <p className="text-sm dark:text-neutral-medium">
               © {year} All Rights Reserved
             </p>
