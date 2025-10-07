@@ -54,13 +54,13 @@ const ServiceCard = ({ service }: { service: Service }) => {
           <h3 className="text-xl font-semibold">{service.title}</h3>
         </div>
 
-        <p className="text-neutral-dark/80 dark:text-neutral-lighter/80 text-sm mb-3">
+        <p className="text-neutral-dark/90 dark:text-neutral-lighter/80 text-sm mb-3">
           {service.short}
         </p>
 
         <p className="text-sm font-light mb-4">{service.description}</p>
 
-        <ul className="list-disc ml-5 text-sm space-y-2 text-neutral-dark/70 dark:text-neutral-lighter/70 mt-auto">
+        <ul className="list-disc ml-5 text-sm space-y-2 text-neutral-dark/90 dark:text-neutral-lighter/70 mt-auto">
           {service.features.map((feature: string, i: number) => (
             <li key={i}>{feature}</li>
           ))}
@@ -92,8 +92,8 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="text-center py-8 border-t border-neutral-darker/60 dark:border-neutral-lighter/40">
-          <p className="text-neutral-dark/70 dark:text-neutral-lighter/70 text-sm">
+        <div className="text-center py-8 border-t border-neutral-darker/50 dark:border-neutral-lighter/40">
+          <p className="text-neutral-dark dark:text-neutral-lighter/70 text-sm">
             Deployment • Customization • Copy Cleanup • Ongoing Support — all
             included
           </p>

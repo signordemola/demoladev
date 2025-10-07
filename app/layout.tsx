@@ -3,6 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,24 +21,25 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: {
     default: "Demoladev | Web Solutions",
-    template: "%s | Demoladev Web Solutions",
-  },
-  icons: {
-    icon: "/favicon.svg",
+    template: "%s | Demoladev",
   },
   description:
     "Custom websites for Nigerian businesses, entrepreneurs, and startups — designed to grow your brand, streamline operations, and boost revenue.",
   keywords: [
-    "web developer in Nigeria",
-    "website designer in Lagos",
-    "custom websites for Nigerian businesses",
-    "affordable web design Nigeria",
-    "business website developer Africa",
-    "SEO-friendly websites Nigeria",
-    "ecommerce developer Nigeria",
-    "professional web design Lagos",
-    "web solutions in Nigeria",
+    "web developer Lagos",
+    "web design Nigeria",
+    "custom business websites",
+    "affordable website development",
+    "ecommerce web developer Nigeria",
+    "SEO-optimized websites",
+    "startup web solutions",
+    "Lagos freelance web developer",
   ],
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   authors: [{ name: "Demoladev", url: "https://demoladevop.com/" }],
   openGraph: {
     title: "Demoladev | Enterprise Web Solutions",
@@ -90,6 +92,24 @@ export default function RootLayout({
           {children}
           <Analytics />
         </ThemeProvider>
+
+        <Script
+          id="ld-json"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Demoladev Web Solutions",
+              url: "https://demoladevop.com",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://demoladevop.com/?s={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
       </body>
     </html>
   );
