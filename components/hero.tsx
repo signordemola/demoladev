@@ -3,6 +3,7 @@
 import React from "react";
 import CustomButton from "./custom-button";
 import Headline from "./headline";
+import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -83,22 +84,14 @@ const Hero = () => {
 
         <div className="relative z-[2] mx-auto translate-y-[10%]">
           <div className="animate-slide-down origin-center transform rounded-xl bg-neutral-light p-1.5 transition-all duration-1000 ease-out border border-neutral-dark/20">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              aria-label="Website development process demonstration"
-              className="w-full h-full md:h-[580px] object-cover backdrop-blur-2xl rounded-md"
-              poster="/poster.webp"
-            >
-              <source
-                src="https://res.cloudinary.com/djfhuinba/video/upload/v1745017812/infography_wvpf2h.mp4"
-                type="video/mp4"
-              />
-              <track kind="captions" srcLang="en" label="English captions" />
-            </video>
+            <Image
+              src="/infography-hero.webp"
+              alt="Animated website preview"
+              width={1200}
+              height={600}
+              className="rounded-md object-cover w-full h-auto"
+              priority
+            />
           </div>
         </div>
       </div>
