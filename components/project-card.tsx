@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { useTransform, motion, useScroll, MotionValue } from "framer-motion";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 
 interface ProjectCardProps {
   i: number;
@@ -40,31 +40,33 @@ const ProjectCard = ({
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
 
-  let textColor = "#000000";
-  try {
-    if (typeof color === "string" && color.startsWith("#")) {
-      let r = 0;
-      let g = 0;
-      let b = 0;
-      const hex = color.slice(1);
-      if (hex.length === 3) {
-        r = parseInt(hex[0] + hex[0], 16);
-        g = parseInt(hex[1] + hex[1], 16);
-        b = parseInt(hex[2] + hex[2], 16);
-      } else if (hex.length === 6) {
-        r = parseInt(hex.slice(0, 2), 16);
-        g = parseInt(hex.slice(2, 4), 16);
-        b = parseInt(hex.slice(4, 6), 16);
-      } else {
-        throw new Error("Invalid hex color length");
+  const textColor = useMemo(() => {
+    try {
+      if (typeof color === "string" && color.startsWith("#")) {
+        let r = 0,
+          g = 0,
+          b = 0;
+        const hex = color.slice(1);
+        if (hex.length === 3) {
+          r = parseInt(hex[0] + hex[0], 16);
+          g = parseInt(hex[1] + hex[1], 16);
+          b = parseInt(hex[2] + hex[2], 16);
+        } else if (hex.length === 6) {
+          r = parseInt(hex.slice(0, 2), 16);
+          g = parseInt(hex.slice(2, 4), 16);
+          b = parseInt(hex.slice(4, 6), 16);
+        } else {
+          return "#000000";
+        }
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        return brightness > 128 ? "#000000" : "#ffffff";
       }
-
-      const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-      textColor = brightness > 128 ? "#000000" : "#ffffff";
+      return "#000000";
+    } catch (err) {
+      console.warn("Invalid color for project card:", color, err);
+      return "#000000";
     }
-  } catch (err) {
-    console.warn("Invalid color for project card:", color, err);
-  }
+  }, [color]);
 
   return (
     <div
@@ -77,6 +79,7 @@ const ProjectCard = ({
           scale,
           top: `calc(-0.5vh + ${i * 25}px)`,
           color: textColor,
+          willChange: "transform",
         }}
         className="w-[95%] md:w-[90%] lg:w-[1000px] h-[500px] relative rounded-xl shadow-2xl origin-top overflow-hidden border border-white/10"
       >
@@ -96,26 +99,22 @@ const ProjectCard = ({
           >
             {/* Image Container */}
             <motion.div
-              className="relative w-full md:w-[55%] h-[240px] md:h-full rounded-lg overflow-hidden"
+              className="relative w-full md:w-[55%] h-[240px] md:h-[350px] rounded-lg overflow-hidden"
               style={{ scale: imageScale }}
             >
               <Image
-                src={imageSrc}
+                src={`${imageSrc}?w=600&h=300&q=auto&f=webp`}
                 alt={`${title} project showcase`}
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 768px) 100vw, 50vw"
-                quality={90}
-                priority={i < 4}
+                quality={75}
+                priority={i < 2}
               />
             </motion.div>
 
             {/* Content Section */}
             <div className="w-full md:w-[45%] flex flex-col justify-between md:py-4">
-              <p className="text-sm md:text-lg lg:text-xl leading-relaxed mb-4">
-                {description}
-              </p>
-
               <Button
                 variant="ghost"
                 className="w-full md:w-fit backdrop-blur-sm border border-white/50 hover:border-white/30"
@@ -138,6 +137,10 @@ const ProjectCard = ({
                   />
                 </svg>
               </Button>
+
+              <p className="text-sm md:text-lg lg:text-xl leading-relaxed mb-4">
+                {description}
+              </p>
             </div>
           </Link>
         </div>
