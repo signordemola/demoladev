@@ -92,6 +92,7 @@ const Hero = () => {
               className="rounded-md object-cover w-full h-auto"
               priority
               sizes="(max-width: 768px) 600px, 1200px"
+              unoptimized
             />
           </div>
         </div>

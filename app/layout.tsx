@@ -19,12 +19,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Demoladev | Web Solutions",
-    template: "%s | Demoladev",
-  },
+  title: "Demoladev | Web Solutions",
   description:
-    "Custom websites for Nigerian businesses, entrepreneurs, and startups — designed to grow your brand, streamline operations, and boost revenue.",
+    "Custom websites for businesses, entrepreneurs, and startups — designed to grow your brand, streamline operations, and boost revenue.",
   keywords: [
     "web developer Lagos",
     "web design Nigeria",
@@ -69,8 +66,32 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://demoladevop.com",
   },
-  metadataBase: new URL("https://demoladevop.com"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://demoladevop.com"
+  ),
   category: "Technology & Web Development",
+  other: {
+    "application/ld+json": JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      name: "Demoladev Web Solutions",
+      url: "https://demoladevop.com",
+      logo: "https://demoladevop.com/apple-touch-icon.png",
+      image: "https://demoladevop.com/og-image.jpg",
+      description:
+        "Custom websites for businesses, entrepreneurs, and startups — designed to grow your brand, streamline operations, and boost revenue.",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Lagos",
+        addressCountry: "NG",
+      },
+      sameAs: [
+        "https://twitter.com/demoladevop",
+        "https://github.com/demoladevop",
+        "https://www.linkedin.com/in/demoladevop/",
+      ],
+    }),
+  },
 };
 
 export default function RootLayout({
