@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://demoladevop.com
+
+# Sitemaps
+Sitemap: https://demoladevop.com/sitemap.xml

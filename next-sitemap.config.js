@@ -1,29 +1,24 @@
-import type { IConfig } from "next-sitemap";
+/** @type {import('next-sitemap').IConfig} */
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://demoladevop.com";
 const buildDate = new Date().toISOString();
 
-const config: IConfig = {
+module.exports = {
   siteUrl,
   generateRobotsTxt: true,
+  sitemapSize: 5000,
   changefreq: "monthly",
   priority: 1.0,
-  sitemapSize: 5000,
   exclude: ["/api/*"],
   robotsTxtOptions: {
     policies: [{ userAgent: "*", allow: "/" }],
   },
-
-  additionalPaths: async () => {
-    return [
-      {
-        loc: "/",
-        lastmod: buildDate,
-        changefreq: "monthly",
-        priority: 1.0,
-      },
-    ];
-  },
+  additionalPaths: async () => [
+    {
+      loc: "/",
+      lastmod: buildDate,
+      changefreq: "monthly",
+      priority: 1.0,
+    },
+  ],
 };
-
-export default config;
