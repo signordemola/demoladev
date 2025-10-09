@@ -15,7 +15,7 @@ import {
 } from "./ui/form";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { Mail, MapPin, PhoneCallIcon } from "lucide-react";
+import { Calendar, Mail, MapPin, PhoneCallIcon } from "lucide-react";
 import { Logo } from "./logo";
 import { formSchema } from "@/lib/schema";
 import { sendContactEmail } from "@/actions/send-email";
@@ -64,7 +64,7 @@ const Footer = () => {
       <div className="max-w-[1200px] mx-auto px-6 py-12">
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           {/* Contact Info */}
-          <div className="space-y-8 md:pl-12">
+          <div className="space-y-8 md:pl-12 relative">
             <div>
               <Logo />
             </div>
@@ -90,12 +90,24 @@ const Footer = () => {
               >
                 <PhoneCallIcon className="w-5 h-5" />
                 <span>(+234) 915 886 1316</span>
-                <span className="text-sm text-neutral-dark/60 dark:text-neutral-lighter/60 group-hover:text-primary">(also on whatsapp)</span>
+                <span className="text-sm text-neutral-dark/60 dark:text-neutral-lighter/60 group-hover:text-primary">
+                  (also on whatsapp)
+                </span>
               </Link>
 
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5" />
                 <span>Lagos, Nigeria • Remote Worldwide</span>
+              </div>
+
+              <div className="absolute bottom-0">
+                <Link
+                  href="/booking"
+                  className="inline-flex items-center gap-2 mt-6 px-6 py-2.5 bg-primary/90 hover:bg-primary text-neutral-lighter transition-all rounded-md font-medium"
+                >
+                  <Calendar className="w-5 h-5" />
+                  <span>Book a Free Consultation</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -121,7 +133,9 @@ const Footer = () => {
                 Message Sent Successfully!
               </h3>
               <p className="text-neutral-dark/80 dark:text-neutral-lighter/80">
-                {`Thanks ${form.getValues("name") || "for reaching out"} — I'll`}
+                {`Thanks ${
+                  form.getValues("name") || "for reaching out"
+                } — I'll`}
                 reply to your email soon.
               </p>
               <Button
@@ -256,7 +270,7 @@ const Footer = () => {
                         <span>Sending...</span>
                       </div>
                     ) : (
-                      "Send Message →"
+                      "Leave a message →"
                     )}
                   </Button>
                 </form>

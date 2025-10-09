@@ -75,9 +75,9 @@ const Hero = () => {
             </CustomButton>
           </a>
 
-          <a href="#contact" className="flex justify-center">
+          <a href="/booking" className="flex justify-center">
             <CustomButton variant="primary">
-              Let&apos;s Make It Happen
+              Book a Free Consultation
             </CustomButton>
           </a>
         </div>
