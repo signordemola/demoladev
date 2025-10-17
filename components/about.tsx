@@ -45,10 +45,12 @@ const About = () => {
                 </span>
 
                 <span className="text-lg md:text-xl lg:text-2xl font-normal leading-relaxed">
-                  a web developer from Lagos who builds high-performance
-                  websites, SaaS MVPs, and digital tools. From landing pages to
-                  scheduling apps, I use modern frameworks to create products
-                  that scale and convert.
+                  a web developer who helps brands, startups, and businesses
+                  build high-performing websites and digital products that drive
+                  results. My focus is on creating clean, scalable web
+                  experiences that look great, load fast, and help you grow
+                  online — whether you’re launching a new idea or improving what
+                  you already have.
                 </span>
 
                 <div className="mt-6 space-y-3 text-base md:text-lg">

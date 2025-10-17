@@ -100,7 +100,7 @@ const Footer = () => {
                 <span>Lagos, Nigeria • Remote Worldwide</span>
               </div>
 
-              <div className="absolute bottom-0">
+              <div className="absolute">
                 <Link
                   href="/booking"
                   className="inline-flex items-center gap-2 mt-6 px-6 py-2.5 bg-primary/90 hover:bg-primary text-neutral-lighter transition-all rounded-md font-medium"
@@ -109,6 +109,9 @@ const Footer = () => {
                   <span>Book a Free Consultation</span>
                 </Link>
               </div>
+
+              <br />
+              <br />
             </div>
           </div>
 
@@ -283,7 +286,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-neutral-dark/30 dark:border-neutral-lighter/20">
           <div className="text-sm mb-4 md:mb-0">
             <span className="text-primary font-medium">DemolaDev</span>
-            <span className="mx-2">•</span>
+            <span className="mx-2">|</span>
             <span>Web Solutions</span>
           </div>
 

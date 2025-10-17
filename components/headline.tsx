@@ -1,19 +1,13 @@
-import { twMerge } from "tailwind-merge";
-
-// Headline.tsx
 interface HeadlineProps {
-  emoji: string;
+  emoji?: string;
   text: string;
-  className?: string;
 }
 
-const Headline = ({ emoji, text, className }: HeadlineProps) => (
-  <div className={twMerge("my-3 mb-4 shadow-fade bg-neutral-light text-primary dark:bg-neutral-lighter/95 z-20 rounded-md ", className)}>
-    <div className="inline-flex items-center gap-2 px-3.5 py-1">
-      <span>{emoji}</span>
-      <span className="text-xs font-semibold">{text}</span>
+export default function Headline({ emoji, text }: HeadlineProps) {
+  return (
+    <div className="flex items-center gap-2">
+      {emoji && <span className="text-2xl">{emoji}</span>}
+      <h2 className="text-2xl font-bold text-primary">{text}</h2>
     </div>
-  </div>
-);
-
-export default Headline;
+  );
+}

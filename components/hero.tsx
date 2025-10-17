@@ -1,6 +1,4 @@
 "use client";
-
-import React from "react";
 import CustomButton from "./custom-button";
 import Headline from "./headline";
 import Image from "next/image";
@@ -8,10 +6,10 @@ import Image from "next/image";
 const Hero = () => {
   return (
     <section id="home" className="mx-4 lg:mx-2" aria-labelledby="hero-heading">
-      <div className="mx-auto relative px-2 max-w-[1200px] gap-8 shadow-sm mb-1 overflow-hidden lg:px-8 py-4 md:py-8 border border-neutral-darker/60 dark:border-neutral-lighter/60 rounded-md">
+      <div className="mx-auto relative py-12 px-2 max-w-[1200px] gap-8 shadow-sm mb-1 overflow-hidden lg:px-8 md:py-8 border border-neutral-darker/60 dark:border-neutral-lighter/60 rounded-md">
         <div className="flex flex-col pb-4 items-center text-center mb-4">
-          <Headline emoji="✌🏻" text="Welcome to Demoladev Web Solutions!" />
-          <h1 className="font-satoshi font-bold tracking-wide text-[40px] leading-none md:text-[65px] lg:text-[60px] xl:text-[69px] pb-4 pt-10 sm:pt-12 md:pt-14 lg:pt-16">
+          <Headline emoji="✌🏻" text="Hello & Welcome!" />
+          <h1 className="font-bold tracking-wide text-[40px] leading-none md:text-[65px] lg:text-[60px] xl:text-[69px] pb-4 pt-10 sm:pt-12 md:pt-14 lg:pt-16">
             <span
               data-br=":r7:"
               data-brr="1"
@@ -22,13 +20,13 @@ const Hero = () => {
                 textWrap: "balance",
               }}
             >
-              Launch or Transform your{" "}
-              <span className="text-primary">{`brand's website`}</span>
+              Build or scale your{" "}
+              <span className="text-primary">{`next web experience`}</span>
             </span>
           </h1>
           <p className="max-w-md text-base text-neutral-darker/85 dark:text-neutral-lighter/85 font-light lg:max-w-2xl lg:text-lg p-2 md:p-0">
-            A fully customizable & standout website that captivate audiences and
-            elevate your vision
+            I craft high-performance websites and SaaS dashboards that help you
+            grow, convert, and stand out — all without the tech overwhelm.
           </p>
         </div>
 

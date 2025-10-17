@@ -33,49 +33,49 @@ export const testimonials = [
 
 export const faqs = [
   {
-    question: "How long does it take to build a website?",
+    question: "How long does it take to build a website or app?",
     answer:
-      "Timelines depend on scope — simple landing pages or portfolios take about a week, while full SaaS MVPs or booking apps can take 3–6 weeks. I work in milestones so you can preview progress early.",
+      "Timelines depend on the project scope — a landing page or portfolio usually takes about a week, while full SaaS dashboards or booking systems can take 3–6 weeks. I deliver in clear milestones, so you can preview and test progress along the way.",
   },
   {
     question: "What’s your development process like?",
     answer:
-      "I start with discovery (goals, content, design ideas), then wireframing, UI design with Tailwind CSS, and development in Next.js + Supabase. Each phase includes feedback rounds before deployment. I use Sentry and Lighthouse audits to ensure performance and reliability.",
+      "Each project starts with discovery — understanding your goals, audience, and workflow. Then comes design, development, and iteration. You’ll see live previews as we go, and I handle everything from UI to deployment. My process ensures transparency and steady progress from start to launch.",
   },
   {
-    question: "Do you handle deployment and setup?",
+    question: "Do you handle hosting, deployment, and setup?",
     answer:
-      "Yes — I take care of the entire setup: domain, DNS (Cloudflare or Namecheap), SSL, analytics, and hosting on Vercel. I also configure environment variables, email setup, and CI/CD for updates.",
+      "Yes. I take care of deployment, domain setup, DNS configuration, SSL, and email. Everything is hosted securely (typically on Vercel), with automated backups and monitoring. You’ll get a ready-to-launch product without needing to touch the technical details.",
   },
   {
-    question: "Can you connect my site to tools like Calendly or Stripe?",
+    question: "Can you integrate payments, bookings, or analytics?",
     answer:
-      "Absolutely. I build and integrate booking systems, payment gateways (Stripe, Paystack), chatbots, and calendar syncs (Google or Outlook) to automate your workflow.",
+      "Absolutely. I build and integrate Stripe or Paystack for payments, Google or Outlook calendars for booking systems, and analytics tools like GA4 or Plausible for tracking user behavior — all fully customized to your business needs.",
   },
   {
-    question: "Do you optimize for SEO and performance?",
+    question: "Do you optimize for SEO, performance, and accessibility?",
     answer:
-      "Yes. Every site is optimized for speed, accessibility, and SEO — including metadata, sitemaps, and analytics setup (Plausible, GA4). I also remove unused scripts and trackers for cleaner performance.",
+      "Yes — every site and app is optimized for speed, SEO, and accessibility. That includes metadata setup, sitemaps, clean code, and Core Web Vitals checks. I also remove unnecessary scripts and trackers for faster load times and better privacy.",
   },
   {
-    question: "What industries do you work with?",
+    question: "What types of businesses do you work with?",
     answer:
-      "I mostly work with small and mid-sized businesses, consultants, and digital creators — helping them launch SaaS products, booking tools, and landing pages that convert visitors into leads.",
+      "I collaborate with startups, small businesses, and digital brands — helping them build SaaS dashboards, client portals, booking systems, and e-commerce platforms. Whether you’re a founder or an agency, I tailor each solution to fit your goals and workflow.",
   },
   {
-    question: "Do you offer ongoing support and updates?",
+    question: "Do you offer ongoing support and maintenance?",
     answer:
-      "Yes — I provide post-launch maintenance, bug fixes, and improvements. You can choose one-time support or a monthly plan that covers uptime checks, backups, and new feature rollouts.",
+      "Yes. I provide ongoing maintenance, feature updates, and bug fixes. You can choose a one-time post-launch package or a monthly support plan that includes uptime monitoring, performance optimization, and security updates.",
   },
   {
     question: "How does pricing work?",
     answer:
-      "I offer fixed pricing for smaller projects (like landing pages or portfolios) and milestone-based pricing for complex apps. You’ll get a clear quote upfront — no hidden fees.",
+      "Smaller projects like landing pages or portfolio sites have fixed pricing. Larger apps — such as SaaS dashboards or booking systems — are milestone-based, with clear deliverables at each stage. Every quote is transparent and tailored to your project’s scope.",
   },
   {
-    question: "Can you work with my existing website?",
+    question: "Can you improve my existing website or app?",
     answer:
-      "Definitely. I can refactor, redesign, or optimize your current site. This includes copy cleanup, SEO improvements, tracker removal, and analytics setup.",
+      "Definitely. I can clean up and optimize your current setup — improving performance, design, SEO, and analytics. Whether it’s a minor refresh or a full rebuild, you’ll get a faster, cleaner, and more effective digital experience.",
   },
 ];
 
@@ -167,119 +167,130 @@ export const projects = [
 
 export const services = [
   {
-    id: "saas-mvp",
-    title: "SaaS MVP Development",
-    short: "Transform your idea into a market-ready software product.",
+    id: "saas-dashboards",
+    title: "SaaS Dashboards",
+    short: "Modern dashboards built for startups and growing teams.",
     description:
-      "I help startups and businesses build Minimum Viable Products that are launch-ready, scalable, and designed for growth. From secure user accounts to analytics dashboards and automated systems — every build is optimized for performance and long-term success.",
+      "I build scalable SaaS dashboards and analytics tools that help businesses visualize data, manage users, and make decisions with clarity. Designed for performance, simplicity, and long-term growth.",
     features: [
-      "Secure login and client management systems",
-      "Simple, intuitive dashboards for data visibility",
-      "Fast setup and reliable hosting environment",
-      "Launch and maintenance support to help you scale",
+      "Authentication and secure user management",
+      "Interactive charts and real-time data updates",
+      "Custom API and Prisma-based integrations",
+      "Responsive layouts optimized for all devices",
     ],
-    highlights: ["Built for growth", "Secure & reliable", "Launch-ready MVPs"],
+    highlights: ["Data-driven", "Scalable", "User-friendly"],
   },
   {
-    id: "landing-pages",
-    title: "High-Converting Landing Pages",
-    short: "Capture more leads and drive real business results.",
+    id: "booking-systems",
+    title: "Booking Systems",
+    short: "Automate scheduling, reminders, and client payments.",
     description:
-      "Your website’s first impression matters. I design professional, conversion-focused landing pages that load quickly, rank well on search engines, and clearly communicate your brand’s value.",
+      "I create custom booking platforms for agencies and service-based businesses — making it easy for clients to schedule, reschedule, and pay online while you manage everything seamlessly.",
     features: [
-      "SEO-optimized content and fast performance",
-      "Mobile-friendly layouts that look great everywhere",
-      "Clear messaging with conversion-focused design",
-      "Optional analytics setup to track visitors and performance",
+      "Calendar booking with timezone support",
+      "Email and SMS reminders to reduce no-shows",
+      "Integrated payments and invoicing",
+      "Staff and availability management",
     ],
-    highlights: ["Conversion focused", "Optimized for SEO", "Mobile-friendly"],
+    highlights: ["Hands-free", "Client-friendly", "Payment-ready"],
   },
   {
-    id: "booking-scheduling",
-    title: "Booking & Scheduling Systems",
-    short: "Automate client appointments and payments in one place.",
+    id: "invoicing-tools",
+    title: "Invoice & Billing Tools",
+    short: "Simplify how you handle client billing and transactions.",
     description:
-      "Perfect for service businesses, coaches, and agencies — I build easy-to-use booking platforms that let clients schedule appointments, get reminders, and make payments online.",
+      "I design custom invoicing systems that let you create branded invoices, automate recurring payments, and track finances from one dashboard — built for freelancers, startups, and businesses.",
     features: [
-      "Calendar-based booking with email or SMS reminders",
-      "Payment integration for smooth transactions",
-      "Custom branding and business hour setup",
-      "Notifications for you and your clients in real-time",
-    ],
-    highlights: [
-      "Hands-free scheduling",
-      "Reminders built-in",
-      "Easy payments",
-    ],
-  },
-  {
-    id: "ai-chatbots",
-    title: "AI Chatbots & Automation Tools",
-    short: "Enhance customer service and lead generation with AI.",
-    description:
-      "I develop intelligent chatbots that answer FAQs, capture leads, and handle client requests — saving your team time while improving client experience.",
-    features: [
-      "Chatbots trained on your business content",
-      "Lead collection and automated follow-ups",
-      "Customizable tone and behavior to match your brand",
-      "Integrates seamlessly into websites or booking flows",
-    ],
-    highlights: ["Time-saving", "Lead-focused", "Fully customizable"],
-  },
-  {
-    id: "invoicing-forms",
-    title: "Invoices, Quotes & Forms",
-    short: "Simplify paperwork and client communication.",
-    description:
-      "I create tools for generating quotes, invoices, and online forms — customized for your brand and easy for clients to use, track, and download.",
-    features: [
-      "Professional templates with auto-calculation",
-      "Branded PDF invoices and forms",
-      "Email notifications for submissions or payments",
-      "Dashboard to manage everything in one place",
+      "Branded invoice templates with PDF export",
+      "Tax, discount, and recurring billing automation",
+      "Stripe, Paystack, or Lemon Squeezy integration",
+      "Payment history dashboard for clients",
     ],
     highlights: ["Automated", "Branded", "Organized"],
   },
   {
-    id: "portfolio-brand",
-    title: "Portfolio & Brand Websites",
-    short: "Showcase your brand with clarity and confidence.",
+    id: "admin-panels",
+    title: "Admin Panels",
+    short: "Internal dashboards that give teams control and visibility.",
     description:
-      "From creative portfolios to company websites, I craft elegant, professional sites that highlight your story, build trust, and convert visitors into clients.",
+      "I build secure admin dashboards that help teams manage data, users, and operations efficiently — combining clarity, power, and flexibility for growing businesses.",
     features: [
-      "Modern design and layout customization",
-      "Optimized for search engines and fast performance",
-      "Includes domain, email, and launch setup",
-      "Ongoing updates and maintenance support available",
+      "Role-based access control and permissions",
+      "Full CRUD management for users and data",
+      "Search, filter, and pagination features",
+      "Activity logs and performance insights",
     ],
-    highlights: ["Professional", "Conversion-ready", "Easy to maintain"],
+    highlights: ["Secure", "Efficient", "Team-ready"],
+  },
+  {
+    id: "ecommerce-websites",
+    title: "E-commerce Websites",
+    short: "Sell online with fast, secure, and easy-to-manage stores.",
+    description:
+      "I build custom e-commerce websites that go beyond templates — combining modern design with powerful management dashboards. You’ll get a smooth shopping experience for customers and a streamlined admin panel for your team.",
+    features: [
+      "Product catalog with inventory tracking",
+      "Secure checkout and payment integrations",
+      "Order management and fulfillment tools",
+      "Custom admin dashboard for analytics and updates",
+    ],
+    highlights: ["Conversion-focused", "Scalable", "Easy to manage"],
+  },
+
+  {
+    id: "client-portals",
+    title: "Client Portals",
+    short: "Branded, secure spaces for clients to log in and interact.",
+    description:
+      "I build client portals where customers can log in, view projects, make payments, and access files securely — giving your business a professional, self-service touchpoint.",
+    features: [
+      "Secure authentication and client dashboard",
+      "Access to invoices, projects, and reports",
+      "File uploads and document management",
+      "Notifications and activity tracking",
+    ],
+    highlights: ["Personalized", "Secure", "Professional"],
+  },
+  {
+    id: "cms-tools",
+    title: "Content Management Tools",
+    short: "Custom CMS and editorial dashboards tailored to your workflow.",
+    description:
+      "I create CMS tools that make managing content simple and efficient — from lightweight blog editors to full-scale publishing systems with role control and SEO features.",
+    features: [
+      "Content creation and editing interface",
+      "Media uploads and file management",
+      "Role-based publishing workflows",
+      "SEO and meta data optimization",
+    ],
+    highlights: ["Flexible", "Editor-friendly", "Easy to use"],
+  },
+  {
+    id: "cleanup-optimization",
+    title: "Website Cleanup & Optimization",
+    short: "Improve speed, structure, and SEO for better performance.",
+    description:
+      "If your website feels slow or outdated, I’ll refine it — improving speed, accessibility, and SEO while cleaning up unnecessary scripts or code for smoother user experiences.",
+    features: [
+      "Performance and accessibility audit",
+      "Code, SEO, and analytics cleanup",
+      "UI/UX refinements and content updates",
+      "Core Web Vitals optimization",
+    ],
+    highlights: ["Faster", "Cleaner", "Better visibility"],
   },
   {
     id: "deployment-maintenance",
     title: "Hosting, Deployment & Maintenance",
     short: "Keep your website secure, fast, and always online.",
     description:
-      "I handle the technical side of your website — from domain setup to ongoing performance monitoring — ensuring your business stays online and your clients stay happy.",
+      "I manage deployment, hosting, and continuous support — ensuring your apps stay updated, protected, and running at top performance with minimal downtime.",
     features: [
-      "Domain and email configuration",
-      "Speed optimization and uptime monitoring",
+      "Cloud deployment and domain configuration",
       "Automated backups and SSL setup",
-      "Ongoing updates and technical support",
+      "Uptime monitoring and performance reports",
+      "Ongoing updates and maintenance support",
     ],
-    highlights: ["Reliable", "Hands-free", "Secure"],
-  },
-  {
-    id: "customization-cleanup",
-    title: "Website Cleanup & Optimization",
-    short: "Refine, update, and enhance your existing website.",
-    description:
-      "If you already have a website but it feels outdated or slow, I’ll help you clean it up — improving speed, structure, content, and tracking for better business results.",
-    features: [
-      "Content and design improvements",
-      "Remove unnecessary or invasive scripts",
-      "SEO and analytics cleanup",
-      "Performance and accessibility audit",
-    ],
-    highlights: ["Cleaner", "Faster", "Better visibility"],
+    highlights: ["Reliable", "Secure", "Hands-free"],
   },
 ];

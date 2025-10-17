@@ -2,27 +2,30 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import {
-  FiTool,
   FiCpu,
-  FiCode,
-  FiSettings,
+  FiCalendar,
+  FiDollarSign,
+  FiLock,
+  FiShoppingCart,
+  FiUser,
+  FiEdit3,
   FiZap,
-  FiBriefcase,
-  FiEdit,
+  FiServer,
 } from "react-icons/fi";
 import Headline from "./headline";
 import { services } from "@/constants";
-import { JSX } from "react";
+import type { JSX } from "react";
 
 const iconMap: Record<string, JSX.Element> = {
-  "saas-mvp": <FiCpu className="w-8 h-8 text-primary" />,
-  "landing-pages": <FiZap className="w-8 h-8 text-primary" />,
-  "booking-scheduling": <FiSettings className="w-8 h-8 text-primary" />,
-  "ai-chatbots": <FiTool className="w-8 h-8 text-primary" />,
-  "invoicing-forms": <FiCode className="w-8 h-8 text-primary" />,
-  "portfolio-brand": <FiBriefcase className="w-8 h-8 text-primary" />,
-  "deployment-maintenance": <FiSettings className="w-8 h-8 text-primary" />,
-  "customization-cleanup": <FiEdit className="w-8 h-8 text-primary" />,
+  "saas-dashboards": <FiCpu className="w-8 h-8 text-primary" />,
+  "booking-systems": <FiCalendar className="w-8 h-8 text-primary" />,
+  "invoicing-tools": <FiDollarSign className="w-8 h-8 text-primary" />,
+  "admin-panels": <FiLock className="w-8 h-8 text-primary" />,
+  "ecommerce-websites": <FiShoppingCart className="w-8 h-8 text-primary" />,
+  "client-portals": <FiUser className="w-8 h-8 text-primary" />,
+  "cms-tools": <FiEdit3 className="w-8 h-8 text-primary" />,
+  "cleanup-optimization": <FiZap className="w-8 h-8 text-primary" />,
+  "deployment-maintenance": <FiServer className="w-8 h-8 text-primary" />,
 };
 
 interface Service {
@@ -50,7 +53,7 @@ const ServiceCard = ({ service }: { service: Service }) => {
         className="group relative border dark:border-neutral-lighter/30 rounded-lg p-6 bg-neutral-light/5 dark:bg-neutral-dark/40 hover:border-primary/60 dark:hover:border-primary/70 transition-all duration-300 h-full flex flex-col"
       >
         <div className="flex items-center gap-3 mb-4">
-          {iconMap[service.id] || <FiCode className="w-8 h-8 text-primary" />}
+          {iconMap[service.id] || <FiCpu className="w-8 h-8 text-primary" />}
           <h3 className="text-xl font-semibold">{service.title}</h3>
         </div>
 
@@ -83,7 +86,7 @@ const Services = () => {
             <span className="w-4 h-4 rounded-full bg-primary"></span>
             <span className="w-4 h-4 rounded-full bg-primary"></span>
           </div>
-          <Headline emoji="💼" text="What I Do!" />
+          <Headline emoji="💼" text="What You Get!" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8 py-12 auto-rows-fr">
