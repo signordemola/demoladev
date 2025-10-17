@@ -27,7 +27,7 @@ const ScrollToTop = () => {
   return (
     <button
       onClick={scrollToTop}
-      aria-label="Scroll to next section"
+      aria-label="Scroll to top"
       className="cursor-pointer animate-bounce right-0 bg-neutral-light text-primary border border-primary shadow-md rounded-sm px-2 py-3"
     >
       <ArrowUp size={25} />

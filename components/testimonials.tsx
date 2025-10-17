@@ -83,6 +83,7 @@ const Testimonials = () => {
 
           <div className="flex gap-4 mt-6 lg:mt-10">
             <button
+              aria-label="Previous testimonial"
               disabled={testimonialIndex === 0}
               onClick={handlePrev}
               className="border border-neutral-dark cursor-pointer size-11 inline-flex items-center justify-center rounded-full hover:bg-red-orange-500 hover:text-primary hover:border-red-orange-500 transition-all duration-300 disabled:bg-neutral-dark disabled:text-white"
@@ -94,6 +95,7 @@ const Testimonials = () => {
                 strokeWidth="1.5"
                 stroke="currentColor"
                 className="size-6"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -103,6 +105,7 @@ const Testimonials = () => {
               </svg>
             </button>
             <button
+              aria-label="Next testimonial"
               disabled={testimonialIndex === testimonials.length - 1}
               onClick={handleNext}
               className="border border-stone-400 cursor-pointer size-11 inline-flex items-center justify-center rounded-full hover:bg-red-orange-500 hover:text-white hover:border-red-orange-500 transition-all duration-300 disabled:bg-gray-700 disabled:text-white"
@@ -114,6 +117,7 @@ const Testimonials = () => {
                 strokeWidth="1.5"
                 stroke="currentColor"
                 className="size-6"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"

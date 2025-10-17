@@ -44,17 +44,20 @@ const ThemeSwitcher = () => {
   return (
     <div className="relative mr-4 lg:mr-0 lg:ml-4 py-1" ref={dropdownRef}>
       <button
+        aria-label={`Change theme (current: ${theme})`}
+        aria-haspopup="menu"
+        aria-expanded={open}
         onClick={() => setOpen(!open)}
         className="flex items-center cursor-pointer gap-2 px-3 py-2 text-sm font-medium rounded-lg border border-accent bg-neutral-light dark:bg-neutral-800 hover:bg-neutral-lighter dark:hover:bg-neutral-700 transition-colors"
       >
         {theme === "light" ? (
-          <Sun className="w-4 h-4" />
+          <Sun className="w-4 h-4" aria-hidden="true" />
         ) : theme === "dark" ? (
-          <Moon className="w-4 h-4" />
+          <Moon className="w-4 h-4" aria-hidden="true" />
         ) : (
-          <Monitor className="w-4 h-4" />
+          <Monitor className="w-4 h-4" aria-hidden="true" />
         )}
-        <span className="capitalize hidden">{theme}</span>
+        <span className="sr-only">Theme: {theme}</span>
       </button>
 
       {open && (
@@ -67,8 +70,8 @@ const ThemeSwitcher = () => {
               }}
               className="flex w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-neutral-light dark:hover:bg-neutral-800 transition-colors"
             >
-              <Sun className="w-4 h-4" />
-              Light
+              <Sun className="w-4 h-4" aria-hidden="true" />
+              <span>Light</span>
             </button>
             <button
               onClick={() => {
@@ -77,8 +80,8 @@ const ThemeSwitcher = () => {
               }}
               className="flex w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
             >
-              <Moon className="w-4 h-4" />
-              Dark
+              <Moon className="w-4 h-4" aria-hidden="true" />
+              <span>Dark</span>
             </button>
             <button
               onClick={() => {
@@ -87,8 +90,8 @@ const ThemeSwitcher = () => {
               }}
               className="flex w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
             >
-              <Monitor className="w-4 h-4" />
-              System
+              <Monitor className="w-4 h-4" aria-hidden="true" />
+              <span>System</span>
             </button>
           </div>
         </div>

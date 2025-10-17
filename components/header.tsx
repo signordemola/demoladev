@@ -9,6 +9,7 @@ import ThemeSwitcher from "./theme-switcher";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const overlayRef = React.useRef<HTMLDivElement | null>(null);
 
   // Debounced scroll handler to prevent excessive re-renders
   useEffect(() => {
@@ -67,62 +68,69 @@ const Header = () => {
     []
   );
 
+  useEffect(() => {
+    if (isOpen && overlayRef.current) {
+      const first = overlayRef.current.querySelector(
+        "a, button, [tabindex]:not([tabindex='-1'])"
+      ) as HTMLElement | null;
+      first?.focus();
+    }
+  }, [isOpen]);
+
   return (
     <header aria-label="Header Section">
       <div className="border-b-0 before:hidden after:hidden">
         {/* Mobile Nav */}
-        <div
-          className={`fixed top-0 left-0 h-full w-full lg:hidden bg-neutral-light transition-all duration-300 ease-in-out ${
-            isOpen
-              ? "z-[60] opacity-100 pointer-events-auto"
-              : "z-[-1] opacity-0 pointer-events-none"
-          }`}
-          aria-hidden={!isOpen}
-          role="dialog"
-          aria-modal="true"
-        >
-          <nav
-            className="mt-20 flex flex-col"
-            aria-label="mobile navbar"
-            data-orientation="vertical"
+        {isOpen && (
+          <div
+            ref={overlayRef}
+            className={`fixed top-0 left-0 h-full w-full lg:hidden bg-neutral-light transition-all duration-300 ease-in-out z-[60] opacity-100 pointer-events-auto`}
+            role="dialog"
+            aria-modal="true"
           >
-            {navItems?.map(({ label, href }) => (
-              <div
-                key={label}
-                className="text-neutral-darker border-t last:border-b border-neutral-dark py-8 group/nav-item relative isolate"
-              >
-                <a
-                  href={href}
-                  onClick={handleMobileNavClick}
-                  aria-label={`Navigate to ${label} section`}
-                  className="block touch-manipulation"
+            <nav
+              className="mt-20 flex flex-col"
+              aria-label="mobile navbar"
+              data-orientation="vertical"
+            >
+              {navItems?.map(({ label, href }) => (
+                <div
+                  key={label}
+                  className="text-neutral-darker border-t last:border-b border-neutral-dark py-8 group/nav-item relative isolate"
                 >
-                  <div className="container !max-w-full flex items-center justify-between px-6">
-                    <span className="text-3xl group-hover/nav-item:pl-2 transition-all duration-300">
-                      {label}
-                    </span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      className="size-6 transition-transform duration-300 group-hover/nav-item:translate-x-1"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-                      />
-                    </svg>
-                  </div>
-                  <div className="absolute w-full h-0 bg-neutral-medium transition-all duration-300 group-hover/nav-item:h-full bottom-0 -z-10" />
-                  <span className="sr-only">Open {label} section</span>
-                </a>
-              </div>
-            ))}
-          </nav>
-        </div>
+                  <a
+                    href={href}
+                    onClick={handleMobileNavClick}
+                    aria-label={`Navigate to ${label} section`}
+                    className="block touch-manipulation"
+                  >
+                    <div className="container !max-w-full flex items-center justify-between px-6">
+                      <span className="text-3xl group-hover/nav-item:pl-2 transition-all duration-300">
+                        {label}
+                      </span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="size-6 transition-transform duration-300 group-hover/nav-item:translate-x-1"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                        />
+                      </svg>
+                    </div>
+                    <div className="absolute w-full h-0 bg-neutral-medium transition-all duration-300 group-hover/nav-item:h-full bottom-0 -z-10" />
+                    <span className="sr-only">Open {label} section</span>
+                  </a>
+                </div>
+              ))}
+            </nav>
+          </div>
+        )}
 
         {/* Header */}
         <div
