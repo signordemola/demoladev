@@ -30,7 +30,6 @@ const Features = () => {
             <Headline
               emoji="⚡"
               text="Why Choose Me?"
-              className="dark:text-lighter"
             />
           </div>
           <div className="border-b border-neutral-darker/60 dark:border-neutral-lighter/60" />
