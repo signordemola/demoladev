@@ -57,7 +57,7 @@ const About = () => {
                   <p>
                     Connect on{" "}
                     <Link
-                      href={`https://x.com/demoladev`}
+                      href={`https://x.com/demoladevop`}
                       className="text-blue-500 hover:underline inline-flex items-center gap-1 transition-colors"
                       aria-label="Demola’s LinkedIn profile"
                       target="_blank"
