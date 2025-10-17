@@ -2,6 +2,17 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Book a Consultation | Demoladev Web Solutions",
+  description:
+    "Schedule a consultation with Demoladev to discuss your web project and get a tailored solution for your business.",
+  alternates: {
+    canonical: "https://demoladevop.com/booking",
+  },
+};
+
 const calendarSrc =
   "https://cal.com/adedamola-developer-ggdwbs/project-discovery-call-free?overlayCalendar=true";
 

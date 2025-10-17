@@ -20,5 +20,16 @@ module.exports = {
       changefreq: "monthly",
       priority: 1.0,
     },
+    {
+      loc: "/booking",
+      lastmod: buildDate,
+      changefreq: "monthly",
+      priority: 0.9,
+    },
   ],
+
+  robotsTxtOptions: {
+    policies: [{ userAgent: "*", allow: "/" }],
+    additionalSitemaps: [`${siteUrl}/sitemap.xml`],
+  },
 };

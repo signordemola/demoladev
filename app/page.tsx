@@ -6,6 +6,14 @@ import { useEffect, useState } from "react";
 import Preloader from "@/components/preloader";
 import dynamic from "next/dynamic";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://demoladevop.com",
+  },
+};
+
 // dynamic loading
 const About = dynamic(() => import("@/components/about"));
 const Faqs = dynamic(() => import("@/components/faqs"));

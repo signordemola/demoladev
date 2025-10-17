@@ -65,7 +65,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://demoladevop.com",
+    languages: {
+      "en-NG": "https://demoladevop.com",
+    },
   },
+
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://demoladevop.com"
   ),
