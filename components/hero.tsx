@@ -25,7 +25,7 @@ const Hero = () => {
             </span>
           </h1>
           <p className="max-w-md text-base text-neutral-darker/85 dark:text-neutral-lighter/85 font-light lg:max-w-2xl lg:text-lg p-2 md:p-0">
-            I craft high-performance websites and SaaS dashboards that help you
+            I craft high-performance websites and digital products that help you
             grow, convert, and stand out — all without the tech overwhelm.
           </p>
         </div>
